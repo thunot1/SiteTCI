@@ -1,0 +1,13 @@
+# Site du Tennis Club Issois — https://tennisclubissois.fr
+# Site public d'information : tout est destiné à être indexé.
+
+User-agent: *
+Allow: /
+
+# Ces dossiers ne sont pas publiés dans l'image Docker ; la mention ici évite
+# simplement des requêtes inutiles si un fichier venait à y être déposé.
+Disallow: /_source/
+Disallow: /ressources/
+Disallow: /tests/
+
+Sitemap: https://tennisclubissois.fr/sitemap.xml

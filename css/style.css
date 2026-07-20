@@ -1,0 +1,1017 @@
+/* ═══════════════════════════════════════════════════════════════
+   Tennis Club Issois — feuille de style du site public
+   ═══════════════════════════════════════════════════════════════
+
+   Aucune police externe n'est chargée : ni Google Fonts, ni CDN.
+   Ce n'est pas une simplification, c'est une conséquence directe de
+   la politique de confidentialité — charger une police depuis un
+   serveur tiers lui transmet l'adresse IP de chaque visiteur, ce qui
+   contredirait la phrase « aucun transfert hors de l'Union
+   européenne ». Les polices système sont donc utilisées, et la page
+   se charge d'autant plus vite.
+   ─────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Rouge relevé dans le logotype du club (#E02F2F).
+     Il est décliné en trois valeurs, et ce n'est pas un caprice : le rouge du
+     logo ne donne que 4,55:1 avec du blanc, soit tout juste le seuil AA, et
+     4,31:1 en petit texte sur fond clair — donc insuffisant. Les aplats
+     portant du texte et les liens utilisent donc des variantes plus profondes,
+     tandis que le logo garde sa teinte exacte. */
+  --rouge:        #E02F2F;  /* teinte du logo — accents, pictogrammes */
+  --rouge-fond:   #C62222;  /* grands aplats portant du texte blanc — 5,75:1 */
+  --rouge-texte:  #B81C1C;  /* petit texte et liens sur fond clair — 6,5:1 */
+  --rouge-lave:   #FCEDE8;  /* fond de survol, pastilles */
+
+  /* Neutres CHAUDS. Les premiers essais utilisaient un gris rosé froid et
+     deux aplats presque noirs : l'ensemble faisait sévère, ce qui contredit
+     un club qui se décrit lui-même comme convivial. Crème et brun chaud
+     ouvrent la page sans rien perdre en lisibilité. */
+  --creme:        #FDF6F0;
+  --creme-fonce:  #F7EBE1;
+  --sable:        #FBF2EA;
+  --encre:        #2A2320;  /* brun très sombre, jamais du noir pur */
+  --gris:         #6E6156;
+  --lisere:       #EADFD4;
+  --fond:         #FFFFFF;
+
+  --vert:         #2E7D57;
+
+  --large:  1160px;
+  --etroit: 760px;
+
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 26px;
+
+  --ombre: 0 2px 4px rgba(42, 35, 32, .04), 0 10px 30px rgba(42, 35, 32, .07);
+  --ombre-forte: 0 4px 10px rgba(42, 35, 32, .07), 0 18px 44px rgba(42, 35, 32, .12);
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--encre);
+  background: var(--fond);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+img { max-width: 100%; display: block; }
+a { color: var(--rouge-texte); }
+
+/* Le focus doit rester visible : c'est la seule façon de naviguer au clavier. */
+:focus-visible { outline: 3px solid var(--rouge); outline-offset: 3px; border-radius: 2px; }
+
+.saut-contenu {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--encre); color: #fff; padding: 12px 20px; z-index: 100;
+}
+.saut-contenu:focus { left: 0; }
+
+.contenu { max-width: var(--large); margin: 0 auto; padding: 0 24px; }
+.contenu-etroit { max-width: var(--etroit); margin: 0 auto; padding: 0 24px; }
+
+/* ── En-tête ─────────────────────────────────────────────────── */
+
+.entete {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255, 255, 255, .96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--lisere);
+}
+.entete-inner {
+  max-width: var(--large); margin: 0 auto; padding: 12px 24px;
+  display: flex; align-items: center; gap: 20px;
+}
+.marque { display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; }
+/* Le logotype contient déjà « Tennis club Issois » : le redoubler d'un titre
+   texte ferait bégayer l'en-tête. Seule la localité l'accompagne. */
+/* Le logotype fait 2,22 de large pour 1 de haut : à 46 px de haut il ne
+   mesurait que 102 px de large, et le mot « Tennis » y devenait illisible.
+   56 px lui donnent 124 px, soit une hauteur de capitale équivalente à du
+   texte de 14 px — le seuil de confort. */
+.marque img { height: 56px; width: auto; }
+.marque-lieu {
+  font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gris); font-weight: 700;
+  padding-left: 14px; border-left: 1px solid var(--lisere);
+}
+@media (max-width: 560px) {
+  .marque img { height: 46px; }
+  .marque-lieu { display: none; }
+}
+
+.nav { margin-left: auto; display: flex; align-items: center; gap: 4px; }
+.nav a {
+  padding: 9px 13px; border-radius: var(--r-sm); text-decoration: none;
+  color: var(--encre); font-size: 15px; font-weight: 600;
+}
+.nav a:hover { background: var(--rouge-lave); color: var(--rouge-texte); }
+.nav a[aria-current="page"] { color: var(--rouge-texte); }
+
+.btn {
+  display: inline-block; padding: 12px 22px; border-radius: var(--r-sm);
+  font-size: 15px; font-weight: 700; text-decoration: none; border: 2px solid transparent;
+  cursor: pointer; font-family: inherit;
+}
+.btn-plein { background: var(--rouge-fond); color: #fff; }
+.btn-plein:hover { background: var(--rouge-texte); }
+.btn-ligne { border-color: var(--rouge-fond); color: var(--rouge-texte); background: transparent; }
+.btn-ligne:hover { background: var(--rouge-fond); color: #fff; }
+.btn-blanc { background: #fff; color: var(--rouge-texte); }
+.btn-blanc:hover { background: var(--rouge-lave); }
+.btn-blanc-ligne { border-color: rgba(255,255,255,.7); color: #fff; }
+.btn-blanc-ligne:hover { background: rgba(255,255,255,.14); border-color: #fff; }
+
+.burger {
+  display: none; margin-left: auto; background: none; border: 0; cursor: pointer;
+  padding: 10px; color: var(--encre);
+}
+.burger svg { display: block; }
+
+@media (max-width: 940px) {
+  .burger { display: block; }
+  .nav {
+    display: none; position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: #fff; border-bottom: 1px solid var(--lisere);
+    padding: 8px 16px 16px; box-shadow: var(--ombre);
+  }
+  .nav.ouvert { display: flex; }
+  .nav a { padding: 13px 12px; font-size: 16px; }
+  .nav .btn { margin-top: 8px; text-align: center; }
+}
+
+/* ── Bandeau d'accueil ───────────────────────────────────────── */
+
+/* Le rouge du bandeau est plus profond que celui du logo : la teinte exacte
+   du logo (#E02F2F) ne donne que 4,55:1 avec du blanc, tout juste le seuil.
+   Le logo, lui, s'y pose en version blanche — la nuance ne se voit donc pas. */
+.hero {
+  position: relative; overflow: hidden; color: #fff;
+  background: linear-gradient(160deg, var(--rouge) 0%, var(--rouge-fond) 55%, #A81A1A 100%);
+}
+
+/* Motif de lignes de court : la géométrie d'un terrain, tracée en CSS.
+   Elle donne une identité au bandeau sans dépendre d'une photographie —
+   utile tant que le club n'a pas fourni ses images. */
+.hero-lignes {
+  position: absolute; inset: 0; opacity: .16; pointer-events: none;
+}
+.hero-lignes span { position: absolute; background: #fff; }
+.hero-lignes .l-h1 { left: 0; right: 0; top: 18%;  height: 2px; }
+.hero-lignes .l-h2 { left: 0; right: 0; top: 82%;  height: 2px; }
+.hero-lignes .l-h3 { left: 8%; right: 8%; top: 34%; height: 2px; }
+.hero-lignes .l-h4 { left: 8%; right: 8%; top: 66%; height: 2px; }
+.hero-lignes .l-v1 { top: 18%; bottom: 18%; left: 8%;  width: 2px; }
+.hero-lignes .l-v2 { top: 18%; bottom: 18%; right: 8%; width: 2px; }
+.hero-lignes .l-v3 { top: 34%; bottom: 34%; left: 50%; width: 2px; }
+.hero-lignes .l-filet { top: 0; bottom: 0; left: 50%; width: 3px; opacity: .55; }
+
+/* Le logotype ajoute 165 px au bandeau : sans resserrer les marges, celui-ci
+   remplissait tout l'écran et rien n'indiquait qu'il y avait une suite. La
+   section suivante doit dépasser de quelques dizaines de pixels — c'est ce
+   qui donne envie de faire défiler. */
+.hero-inner {
+  position: relative; max-width: var(--large); margin: 0 auto;
+  padding: 54px 24px 62px;
+}
+/* Le logotype en blanc, posé sur le rouge : c'est la version qui identifie le
+   club en un coup d'œil, là où une icône carrée obligeait à la doubler d'un
+   titre en texte. */
+.hero-logo { width: 244px; max-width: 68vw; height: auto; margin-bottom: 24px; }
+@media (max-width: 620px) { .hero-logo { width: 200px; margin-bottom: 18px; } }
+
+/* La pastille est ASSOMBRIE, pas éclaircie. Un voile blanc sur le rouge
+   l'éclaircit et fait tomber le contraste du texte blanc à 4,1:1 — sous le
+   seuil AA. Un voile noir le renforce au contraire : 6,8:1 à 20 %. */
+.claim {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(0,0,0,.20); border: 1px solid rgba(255,255,255,.45);
+  padding: 7px 16px; border-radius: 999px;
+  font-size: 13.5px; font-weight: 700; letter-spacing: .01em;
+}
+.hero h1 {
+  font-size: clamp(34px, 5.6vw, 58px); line-height: 1.08;
+  margin: 22px 0 18px; max-width: 16ch;
+}
+.hero-texte { font-size: 19px; max-width: 54ch; color: rgba(255,255,255,.94); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+/* ── Sections ────────────────────────────────────────────────── */
+
+.section { padding: 72px 0; }
+.section-doux { background: var(--creme); }
+.section-tete { margin-bottom: 34px; }
+.surtitre {
+  font-size: 12px; font-weight: 800; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--rouge-texte);
+}
+.section-tete h2 { font-size: clamp(26px, 3.4vw, 36px); margin-top: 10px; }
+.section-tete p { color: var(--gris); margin-top: 10px; max-width: 62ch; }
+
+/* ── Les trois chemins ───────────────────────────────────────── */
+
+.chemins { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 860px) { .chemins { grid-template-columns: 1fr; } }
+
+.chemin {
+  display: block; text-decoration: none; color: inherit;
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 28px 26px 24px; transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.chemin:hover { border-color: var(--rouge); transform: translateY(-3px); box-shadow: var(--ombre); }
+.chemin-icone {
+  width: 46px; height: 46px; border-radius: 12px; background: var(--rouge-lave);
+  color: var(--rouge-texte); display: grid; place-items: center; margin-bottom: 16px;
+}
+.chemin h3 { font-size: 21px; margin-bottom: 8px; }
+.chemin p { color: var(--gris); font-size: 15.5px; }
+.chemin-lien {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
+  color: var(--rouge-texte); font-weight: 700; font-size: 15px;
+}
+
+/* ── Chiffres ────────────────────────────────────────────────── */
+
+.chiffres { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--lisere);
+            border: 1px solid var(--lisere); border-radius: var(--r-md); overflow: hidden; }
+/* Même seuil que les trois chemins : entre 760 et 860 px, garder quatre
+   colonnes ici alors que les cartes sont déjà empilées donnait des libellés
+   sur trois lignes dans des colonnes de 190 px. */
+@media (max-width: 900px) { .chiffres { grid-template-columns: repeat(2, 1fr); } }
+.chiffre { background: #fff; padding: 26px 22px; text-align: center; }
+.chiffre .n {
+  font-family: var(--serif); font-size: 40px; line-height: 1;
+  color: var(--rouge); font-weight: 600; font-variant-numeric: tabular-nums;
+}
+.chiffre .l { margin-top: 8px; font-size: 14.5px; color: var(--gris); }
+
+/* ── Actualités ──────────────────────────────────────────────── */
+
+.actus { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .actus { grid-template-columns: 1fr; } }
+.actu {
+  background: #fff; border: 1px solid var(--lisere);
+  border-radius: var(--r-md); padding: 24px; border-top: 4px solid var(--rouge);
+}
+.actu time { font-size: 13px; font-weight: 700; color: var(--rouge-texte); letter-spacing: .04em; }
+.actu h3 { font-size: 19px; margin: 8px 0 8px; }
+.actu p { color: var(--gris); font-size: 15.5px; }
+
+/* Aucune actualité : on propose autre chose plutôt que d'afficher un vide. */
+.actu-vide {
+  background: #fff; border: 1px dashed var(--lisere); border-radius: var(--r-md);
+  padding: 34px; text-align: center; color: var(--gris);
+}
+
+/* ── Mot du président ────────────────────────────────────────── */
+
+.mot { display: grid; grid-template-columns: 1.15fr 1fr; gap: 44px; align-items: center; }
+@media (max-width: 900px) { .mot { grid-template-columns: 1fr; gap: 28px; } }
+.mot blockquote {
+  margin: 0; font-family: var(--serif); font-size: 22px; line-height: 1.5;
+  border-left: 4px solid var(--rouge); padding-left: 24px;
+}
+.mot .signe { margin-top: 20px; font-size: 15px; }
+.mot .signe strong { display: block; font-size: 17px; }
+.mot .signe span { color: var(--gris); }
+
+/* Cet encart était sur fond presque noir. Sur une page qui parle d'un club
+   « à l'esprit convivial », deux aplats sombres donnaient un ton sévère.
+   Le rouge du club joue le même rôle d'accroche, en accueillant. */
+.encart-cours {
+  position: relative; overflow: hidden;
+  background: linear-gradient(150deg, var(--rouge) 0%, var(--rouge-fond) 100%);
+  color: #fff; border-radius: var(--r-lg); padding: 36px 34px;
+  box-shadow: var(--ombre-forte);
+}
+/* Rappel discret de la balle du logotype, en filigrane. */
+.encart-cours::after {
+  content: ""; position: absolute; right: -46px; bottom: -56px;
+  width: 190px; height: 190px; border-radius: 50%;
+  background: rgba(255,255,255,.10); pointer-events: none;
+}
+.encart-cours > * { position: relative; }
+.encart-cours h3 { font-size: 24px; color: #fff; }
+.encart-cours p { color: rgba(255,255,255,.92); margin: 12px 0 24px; font-size: 15.5px; }
+.encart-cours .btn-blanc { background: #fff; color: var(--rouge-texte); }
+
+/* ── Partenaires ─────────────────────────────────────────────── */
+
+.partenaires {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px;
+}
+.partenaire {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 22px 16px; text-align: center; text-decoration: none;
+  color: var(--encre); font-weight: 700; font-size: 15px;
+  display: grid; place-items: center; min-height: 84px;
+}
+.partenaire:hover { border-color: var(--rouge); color: var(--rouge-texte); }
+.partenaire small { display: block; font-weight: 600; color: var(--gris); font-size: 12.5px; margin-top: 4px; }
+
+/* ── Bandeau d'appel ─────────────────────────────────────────── */
+
+/* Le bandeau final était lui aussi presque noir, juste avant le pied de page :
+   la page se fermait sur deux zones sombres consécutives. Un sable chaud, avec
+   le tracé de court en filigrane, referme la page en écho au bandeau du haut
+   sans l'assombrir. */
+.appel {
+  position: relative; overflow: hidden;
+  background: var(--sable); color: var(--encre);
+  padding: 76px 0; text-align: center;
+  border-top: 1px solid var(--lisere);
+}
+.appel-lignes { position: absolute; inset: 0; opacity: .07; pointer-events: none; }
+.appel-lignes span { position: absolute; background: var(--rouge); }
+.appel-lignes .a-h1 { left: 0; right: 0; top: 22%; height: 2px; }
+.appel-lignes .a-h2 { left: 0; right: 0; top: 78%; height: 2px; }
+.appel-lignes .a-v1 { top: 22%; bottom: 22%; left: 12%; width: 2px; }
+.appel-lignes .a-v2 { top: 22%; bottom: 22%; right: 12%; width: 2px; }
+.appel-lignes .a-filet { top: 8%; bottom: 8%; left: 50%; width: 3px; opacity: .8; }
+.appel .contenu { position: relative; }
+.appel h2 { font-size: clamp(26px, 3.6vw, 38px); }
+.appel p { color: var(--gris); margin: 14px auto 30px; max-width: 52ch; }
+.appel-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+/* ── Pied de page ────────────────────────────────────────────── */
+
+.pied { background: var(--creme); border-top: 1px solid var(--lisere); padding: 58px 0 28px; }
+.pied-grille { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+@media (max-width: 860px) { .pied-grille { grid-template-columns: 1fr; gap: 28px; } }
+.pied h4 {
+  font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--gris); margin: 0 0 14px;
+}
+.pied ul { list-style: none; margin: 0; padding: 0; }
+.pied li { margin-bottom: 2px; font-size: 15.5px; }
+.pied a { color: var(--encre); text-decoration: none; }
+/* Les liens du pied sont empilés : au doigt, une ligne de texte de 21 px de
+   haut est difficile à viser. On élargit la zone tactile sans changer
+   l'apparence — le lien reste une ligne de texte, la cible fait 44 px. */
+.pied li a, .pied address a { display: inline-block; padding: 11px 0; line-height: 1.3; }
+.pied address a { padding: 7px 0; }
+.pied a:hover { color: var(--rouge-texte); text-decoration: underline; }
+.pied address { font-style: normal; color: var(--gris); font-size: 15.5px; line-height: 1.75; }
+.pied-bas {
+  margin-top: 38px; padding-top: 22px; border-top: 1px solid var(--lisere);
+  display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between;
+  font-size: 14px; color: var(--gris);
+}
+.pied-legal { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.pied-legal a { display: inline-block; padding: 10px 0; }
+
+/* ═══════════════════════════════════════════════════════════════
+   PAGES INTÉRIEURES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Bandeau de page : même famille que l'accueil, en beaucoup plus court —
+   sur une page intérieure, le visiteur vient chercher une information, pas
+   se faire convaincre. */
+.hero-page {
+  position: relative; overflow: hidden; color: #fff;
+  background: linear-gradient(160deg, var(--rouge) 0%, var(--rouge-fond) 60%, #A81A1A 100%);
+}
+.hero-page .hero-inner { padding: 46px 24px 52px; }
+.hero-page h1 { font-size: clamp(30px, 4.6vw, 46px); margin: 14px 0 14px; max-width: 20ch; }
+.hero-page .hero-texte { font-size: 18px; }
+
+.fil { font-size: 13.5px; color: rgba(255,255,255,.85); }
+/* Le fil d'ariane est un lien de navigation isolé, pas un lien en pleine
+   phrase : il doit offrir une zone tactile confortable. Le remplissage est
+   vertical seulement, pour ne pas décaler la ligne. */
+.fil a {
+  color: #fff; text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.45);
+  display: inline-block; padding: 7px 0;
+}
+.fil a:hover { border-bottom-color: #fff; }
+
+/* ── Sommaire de page ────────────────────────────────────────── */
+
+.sommaire {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 18px 0; border-bottom: 1px solid var(--lisere);
+}
+.sommaire a {
+  padding: 9px 16px; border-radius: 999px; text-decoration: none;
+  background: var(--creme); border: 1px solid var(--lisere);
+  color: var(--encre); font-size: 14.5px; font-weight: 600;
+}
+.sommaire a:hover { background: var(--rouge-lave); border-color: var(--rouge); color: var(--rouge-texte); }
+
+/* ── Formules de cours ───────────────────────────────────────── */
+
+.formules { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+.formule {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 24px 22px; display: flex; flex-direction: column;
+}
+.formule.mise-en-avant { border-color: var(--rouge); box-shadow: var(--ombre); }
+.formule .etiq {
+  font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--rouge-texte);
+}
+.formule h3 { font-size: 20px; margin: 8px 0 6px; }
+.formule .desc { color: var(--gris); font-size: 15px; flex: 1; }
+.formule .prix {
+  font-family: var(--serif); font-size: 32px; color: var(--encre);
+  margin-top: 18px; font-variant-numeric: tabular-nums;
+}
+.formule .prix span { font-size: 14px; color: var(--gris); font-family: var(--sans); }
+
+/* ── Planning ────────────────────────────────────────────────── */
+
+/* Un tableau à six colonnes est illisible sur un téléphone. Le planning est
+   donc groupé PAR JOUR : c'est aussi la façon dont on le consulte
+   réellement — « à quelle heure est mon cours du mercredi ». Chaque créneau
+   est une ligne en grille, qui s'empile proprement en petite largeur. */
+.jour { margin-bottom: 30px; }
+.jour-tete {
+  display: flex; align-items: baseline; gap: 12px;
+  padding-bottom: 10px; margin-bottom: 4px;
+  border-bottom: 2px solid var(--rouge);
+}
+.jour-tete h3 { font-size: 22px; }
+.jour-tete .nb { font-size: 13.5px; color: var(--gris); }
+
+.creneau {
+  display: grid; grid-template-columns: 120px 1fr 190px 130px;
+  gap: 16px; align-items: center;
+  padding: 14px 4px; border-bottom: 1px solid var(--lisere);
+}
+.creneau:hover { background: var(--creme); }
+.creneau .h {
+  font-weight: 800; font-variant-numeric: tabular-nums; font-size: 16px;
+  color: var(--rouge-texte); white-space: nowrap;
+}
+.creneau .h small { display: block; font-weight: 600; color: var(--gris); font-size: 12.5px; }
+.creneau .g { font-weight: 700; }
+.creneau .g small { display: block; font-weight: 400; color: var(--gris); font-size: 13.5px; }
+.creneau .m { color: var(--gris); font-size: 15px; }
+.creneau .c { font-size: 13.5px; color: var(--gris); text-align: right; }
+
+@media (max-width: 820px) {
+  .creneau { grid-template-columns: 96px 1fr; gap: 6px 14px; padding: 16px 4px; }
+  .creneau .m, .creneau .c { grid-column: 2; text-align: left; }
+  .creneau .c { font-size: 13px; }
+}
+
+/* Bandeau d'avertissement — données non définitives. Volontairement voyant :
+   un planning faux affiché comme vrai serait pire que pas de planning. */
+.provisoire {
+  background: #FFF4E5; border: 2px solid #C77700; border-radius: var(--r-md);
+  padding: 18px 22px; margin-bottom: 26px;
+}
+.provisoire strong { color: #8A5200; }
+.provisoire p { font-size: 15px; margin-top: 6px; }
+
+/* ── Règle du court couvert ──────────────────────────────────── */
+
+.regle {
+  background: var(--creme); border-radius: var(--r-lg);
+  padding: 30px 32px; border-left: 5px solid var(--rouge);
+}
+.regle h3 { font-size: 21px; margin-bottom: 12px; }
+.regle ul { margin: 12px 0 0; padding-left: 1.2em; }
+.regle li { margin-bottom: 8px; }
+.regle li::marker { color: var(--rouge); }
+
+/* ── Équipe ──────────────────────────────────────────────────── */
+
+.equipe { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+.moniteur {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 22px 20px; text-align: center;
+}
+.moniteur .initiales {
+  width: 62px; height: 62px; margin: 0 auto 14px; border-radius: 50%;
+  background: var(--rouge-lave); color: var(--rouge-texte);
+  display: grid; place-items: center;
+  font-family: var(--serif); font-size: 23px; font-weight: 600;
+}
+.moniteur .nom { font-weight: 700; font-size: 16.5px; }
+.moniteur .role { color: var(--gris); font-size: 14px; margin-top: 3px; }
+
+/* ── Étapes ──────────────────────────────────────────────────── */
+
+.etapes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: etape; }
+@media (max-width: 860px) { .etapes { grid-template-columns: 1fr; } }
+.etape-carte {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 26px 24px; position: relative;
+}
+.etape-carte::before {
+  counter-increment: etape; content: counter(etape);
+  display: grid; place-items: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--rouge-fond); color: #fff;
+  font-family: var(--serif); font-size: 20px; font-weight: 600;
+  margin-bottom: 16px;
+}
+.etape-carte h3 { font-size: 19px; margin-bottom: 8px; }
+.etape-carte p { color: var(--gris); font-size: 15.5px; }
+
+/* ── Simulateur ──────────────────────────────────────────────── */
+
+/* Le bloc est masqué par défaut et révélé par le script : sans JavaScript,
+   le visiteur ne voit pas un formulaire inerte, il voit directement les
+   tableaux de tarifs, qui restent la source de vérité. */
+.simulateur { display: none; }
+.simulateur.actif { display: block; }
+
+.simu {
+  background: var(--creme); border: 1px solid var(--lisere);
+  border-radius: var(--r-lg); padding: 30px 32px;
+  display: grid; grid-template-columns: 1fr 300px; gap: 34px;
+}
+@media (max-width: 880px) { .simu { grid-template-columns: 1fr; gap: 24px; } }
+
+.simu-champ { margin-bottom: 20px; }
+.simu-champ label {
+  display: block; font-weight: 700; font-size: 14.5px; margin-bottom: 8px;
+}
+.simu-champ select {
+  width: 100%; padding: 13px 14px; font-size: 16px; font-family: inherit;
+  color: var(--encre); background: #fff;
+  border: 1.5px solid var(--lisere); border-radius: var(--r-sm);
+}
+.simu-champ select:hover { border-color: var(--rouge); }
+.simu-cases { display: flex; flex-direction: column; gap: 4px; }
+.simu-cases label {
+  display: flex; align-items: center; gap: 10px; font-weight: 500;
+  font-size: 15px; padding: 9px 0; cursor: pointer; margin: 0;
+}
+.simu-cases input { width: 19px; height: 19px; accent-color: var(--rouge-fond); }
+
+.simu-resultat {
+  background: #fff; border: 2px solid var(--rouge-fond); border-radius: var(--r-md);
+  padding: 24px 22px; align-self: start;
+}
+.simu-resultat h3 {
+  font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--rouge-texte); font-family: var(--sans); margin-bottom: 14px;
+}
+.simu-lignes { list-style: none; margin: 0 0 14px; padding: 0; }
+.simu-lignes li {
+  display: flex; justify-content: space-between; gap: 14px;
+  font-size: 14.5px; padding: 7px 0; border-bottom: 1px solid var(--lisere);
+}
+.simu-lignes li span:last-child { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+.simu-total {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 14px; padding-top: 12px;
+}
+.simu-total .lbl { font-weight: 700; }
+.simu-total .val {
+  font-family: var(--serif); font-size: 34px; color: var(--rouge-texte);
+  font-variant-numeric: tabular-nums;
+}
+.simu-note { font-size: 13.5px; color: var(--gris); margin-top: 12px; line-height: 1.5; }
+.simu-caution {
+  margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--lisere);
+  font-size: 13.5px; color: var(--gris);
+}
+
+/* ── Tableaux de tarifs ──────────────────────────────────────── */
+
+.tarifs { overflow-x: auto; border: 1px solid var(--lisere); border-radius: var(--r-md); }
+/* 420 px de largeur minimale forçaient un défilement horizontal sur téléphone
+   pour un simple tableau « libellé / montant ». 280 px suffisent : le contenu
+   tient dans 327 px de large, et le conteneur défilant reste en filet de
+   sécurité si un libellé venait à s'allonger. */
+.tarifs table { border-collapse: collapse; width: 100%; min-width: 280px; background: #fff; }
+.tarifs caption {
+  text-align: left; font-weight: 800; font-size: 12px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--rouge-texte);
+  padding: 16px 18px 10px; background: #fff;
+}
+.tarifs th, .tarifs td { padding: 13px 18px; border-top: 1px solid var(--lisere); text-align: left; }
+.tarifs thead th {
+  font-size: 11px; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--gris); font-weight: 700; background: var(--creme);
+}
+.tarifs td:last-child, .tarifs th:last-child {
+  text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 700;
+}
+.tarifs tbody tr:hover { background: var(--creme); }
+.tarifs .precision { display: block; font-weight: 400; color: var(--gris); font-size: 13.5px; }
+
+.grille-tarifs { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 880px) { .grille-tarifs { grid-template-columns: 1fr; } }
+
+/* ── Dossier ─────────────────────────────────────────────────── */
+
+.pieces { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+.piece {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 24px 22px; border-top: 4px solid var(--rouge);
+}
+.piece h3 { font-size: 18px; margin-bottom: 8px; }
+.piece p { font-size: 15px; color: var(--gris); }
+.piece p + p { margin-top: 8px; }
+
+.bonne-nouvelle {
+  background: #EAF6EF; border: 1px solid #B6DCC6; border-left: 5px solid var(--vert);
+  border-radius: var(--r-md); padding: 20px 24px; margin-bottom: 24px;
+}
+.bonne-nouvelle strong { color: #1F5B3E; }
+
+/* ── Dépôt du dossier ────────────────────────────────────────── */
+
+.depots { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+.depot {
+  background: var(--creme); border-radius: var(--r-md); padding: 22px 20px;
+  border: 1px solid var(--lisere);
+}
+.depot .quand {
+  font-size: 11.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--rouge-texte); margin-bottom: 6px;
+}
+.depot h3 { font-size: 17.5px; margin-bottom: 6px; }
+.depot p { font-size: 14.5px; color: var(--gris); }
+
+/* ── Marqueur « à compléter » ─────────────────────────────────── */
+
+/* Discret mais repérable à la relecture. Sert aux informations que le club
+   doit fournir : ne rien écrire vaudrait mieux que d'inventer, mais un vide
+   silencieux passerait inaperçu au moment de publier. */
+.a-completer {
+  display: inline-block; font-size: 12.5px; font-weight: 700;
+  color: #8A5200; background: #FFF4E5; border: 1px dashed #C77700;
+  padding: 2px 9px; border-radius: 999px;
+}
+
+/* ── Installations ───────────────────────────────────────────── */
+
+.courts { display: grid; grid-template-columns: 1.35fr 1fr; gap: 22px; }
+@media (max-width: 880px) { .courts { grid-template-columns: 1fr; } }
+.court {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-lg);
+  padding: 30px 32px;
+}
+.court .compte {
+  font-family: var(--serif); font-size: 46px; line-height: 1;
+  color: var(--rouge); font-variant-numeric: tabular-nums;
+}
+.court h3 { font-size: 22px; margin: 10px 0 10px; }
+.court p { color: var(--gris); font-size: 15.5px; }
+.court p + p { margin-top: 10px; }
+.court .liste { list-style: none; margin: 16px 0 0; padding: 0; }
+.court .liste li {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 15px; padding: 7px 0; border-top: 1px solid var(--lisere);
+}
+.court .liste li::before { content: "—"; color: var(--rouge); flex: 0 0 auto; }
+
+/* ── Accès ───────────────────────────────────────────────────── */
+
+.acces { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+@media (max-width: 880px) { .acces { grid-template-columns: 1fr; } }
+.itineraire { counter-reset: pas; list-style: none; margin: 0; padding: 0; }
+.itineraire li {
+  display: grid; grid-template-columns: 30px 1fr; gap: 14px;
+  padding: 12px 0; border-bottom: 1px solid var(--lisere); font-size: 15.5px;
+}
+.itineraire li::before {
+  counter-increment: pas; content: counter(pas);
+  display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--rouge-lave); color: var(--rouge-texte);
+  font-size: 13px; font-weight: 800;
+}
+
+/* ── Organisation ────────────────────────────────────────────── */
+
+.bureau { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+.membre {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 18px 20px;
+}
+.membre .fonction {
+  font-size: 11.5px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--rouge-texte);
+}
+.membre .nom { font-weight: 700; font-size: 16.5px; margin-top: 4px; }
+
+.liste-simple { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.liste-simple li {
+  background: #fff; border: 1px solid var(--lisere); border-radius: 999px;
+  padding: 8px 16px; font-size: 15px;
+}
+
+.commissions { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.commission {
+  display: flex; justify-content: space-between; gap: 14px; align-items: baseline;
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-sm);
+  padding: 14px 18px;
+}
+.commission .nom { font-weight: 700; font-size: 15.5px; }
+.commission .qui { color: var(--gris); font-size: 14.5px; text-align: right; }
+
+/* ── Documents ───────────────────────────────────────────────── */
+
+.documents { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.document {
+  background: var(--creme); border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 24px 22px;
+}
+.document h3 { font-size: 18px; margin-bottom: 8px; }
+.document p { font-size: 15px; color: var(--gris); }
+
+.regles-usage { list-style: none; margin: 18px 0 0; padding: 0;
+                display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+.regles-usage li {
+  background: #fff; border-left: 3px solid var(--rouge); border-radius: var(--r-sm);
+  padding: 13px 16px; font-size: 15px;
+}
+
+/* ── Lettre du président ─────────────────────────────────────── */
+
+.lettre {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-lg);
+  padding: 38px 40px; max-width: 74ch;
+}
+@media (max-width: 620px) { .lettre { padding: 28px 24px; } }
+.lettre p { font-size: 16.5px; line-height: 1.72; }
+.lettre p + p { margin-top: 16px; }
+.lettre ul { margin: 14px 0; padding-left: 1.2em; }
+.lettre li { margin-bottom: 8px; }
+.lettre li::marker { color: var(--rouge); }
+.lettre .signature {
+  margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--lisere);
+}
+.lettre .signature strong { display: block; font-size: 17px; }
+.lettre .signature span { color: var(--gris); font-size: 15px; }
+
+/* Lien de navigation isolé dans son paragraphe. Contrairement à un lien en
+   pleine phrase — que WCAG dispense de taille minimale — celui-ci se vise au
+   doigt comme un bouton, et doit donc offrir une zone suffisante. */
+.lien-seul {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 0; font-weight: 700;
+}
+
+/* ── Vitrine des partenaires ─────────────────────────────────── */
+
+/* Les logos ne sont pas encore fournis : chaque partenaire est présenté par
+   son nom composé en serif, ce qui donne une carte lisible et volontaire
+   plutôt qu'un cadre vide en attente d'image. Le jour où les logos arrivent,
+   ils remplacent le nom sans toucher à la grille. */
+.vitrine { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.vitrine-carte {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 28px 22px; text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: 132px; text-align: center;
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+a.vitrine-carte:hover {
+  border-color: var(--rouge); transform: translateY(-3px); box-shadow: var(--ombre);
+}
+.vitrine-carte .nom {
+  font-family: var(--serif); font-size: 20px; font-weight: 600; line-height: 1.2;
+}
+.vitrine-carte .secteur {
+  font-size: 12.5px; color: var(--gris); margin-top: 8px;
+}
+.vitrine-carte .site {
+  font-size: 12.5px; color: var(--rouge-texte); font-weight: 700; margin-top: 10px;
+}
+.vitrine-carte img { max-height: 62px; width: auto; margin: 0 auto; }
+
+.famille-partenaires { margin-bottom: 34px; }
+.famille-partenaires h3 {
+  font-size: 13px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--rouge-texte); font-family: var(--sans);
+  padding-bottom: 8px; border-bottom: 1px solid var(--lisere); margin-bottom: 18px;
+}
+
+/* ── Arguments chiffrés ──────────────────────────────────────── */
+
+.arguments { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.argument {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 26px 24px; border-top: 4px solid var(--rouge);
+}
+.argument .chiffre-cle {
+  font-family: var(--serif); font-size: 40px; line-height: 1; color: var(--rouge);
+  font-variant-numeric: tabular-nums;
+}
+.argument h3 { font-size: 18px; margin: 10px 0 8px; }
+.argument p { color: var(--gris); font-size: 15px; }
+
+/* ── Ce que le club propose ──────────────────────────────────── */
+
+.supports-visibilite { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+.support-visi {
+  background: var(--creme); border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 24px 22px;
+}
+.support-visi .picto {
+  width: 44px; height: 44px; border-radius: 12px; background: #fff;
+  color: var(--rouge-texte); display: grid; place-items: center; margin-bottom: 14px;
+  border: 1px solid var(--lisere);
+}
+.support-visi h3 { font-size: 18px; margin-bottom: 8px; }
+.support-visi p { font-size: 15px; color: var(--gris); }
+
+/* ── Contact ─────────────────────────────────────────────────── */
+
+.contacts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.contact-carte {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 26px 24px; display: flex; flex-direction: column;
+}
+.contact-carte .picto {
+  width: 46px; height: 46px; border-radius: 12px; background: var(--rouge-lave);
+  color: var(--rouge-texte); display: grid; place-items: center; margin-bottom: 16px;
+}
+.contact-carte h3 { font-size: 19px; margin-bottom: 6px; }
+.contact-carte p { color: var(--gris); font-size: 15px; flex: 1; }
+.contact-carte .valeur {
+  display: inline-block; margin-top: 14px; padding: 10px 0;
+  font-size: 17px; font-weight: 700; color: var(--rouge-texte);
+  text-decoration: none; word-break: break-word;
+}
+.contact-carte .valeur:hover { text-decoration: underline; }
+
+/* ── Qui contacter ───────────────────────────────────────────── */
+
+.aiguillage { border-top: 2px solid var(--encre); }
+.aiguillage-ligne {
+  display: grid; grid-template-columns: 1fr 260px; gap: 20px; align-items: center;
+  padding: 18px 4px; border-bottom: 1px solid var(--lisere);
+}
+@media (max-width: 760px) {
+  .aiguillage-ligne { grid-template-columns: 1fr; gap: 6px; }
+}
+.aiguillage-ligne .besoin { font-weight: 700; font-size: 16.5px; }
+.aiguillage-ligne .besoin small {
+  display: block; font-weight: 400; color: var(--gris); font-size: 14.5px; margin-top: 3px;
+}
+.aiguillage-ligne .qui { font-size: 15px; }
+.aiguillage-ligne .qui strong { display: block; }
+.aiguillage-ligne .qui a { display: inline-block; padding: 8px 0; font-weight: 700; }
+
+/* ── Liens utiles ────────────────────────────────────────────── */
+
+.liens-utiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.lien-utile {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 20px 22px; text-decoration: none; color: inherit;
+}
+.lien-utile:hover { border-color: var(--rouge); }
+.lien-utile .picto { color: var(--rouge-texte); flex: 0 0 auto; margin-top: 2px; }
+.lien-utile .nom { font-weight: 700; font-size: 16.5px; }
+.lien-utile .desc { color: var(--gris); font-size: 14.5px; margin-top: 3px; }
+.lien-utile .hote { color: var(--rouge-texte); font-size: 13px; font-weight: 700; margin-top: 8px; }
+
+/* ── Plan des installations ──────────────────────────────────── */
+
+/* Schéma redessiné plutôt que capture cartographique : aucune question de
+   licence, 3 Ko au lieu de 154, et il reste net à toute taille. La
+   localisation dans la commune est assurée par le lien vers OpenStreetMap. */
+.plan {
+  background: var(--creme); border: 1px solid var(--lisere);
+  border-radius: var(--r-lg); padding: 26px 24px;
+}
+.plan svg { width: 100%; height: auto; display: block; }
+.plan-legende {
+  display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 18px;
+  padding-top: 16px; border-top: 1px solid var(--lisere);
+}
+.plan-legende span { display: flex; align-items: center; gap: 8px; font-size: 14.5px; }
+.plan-legende i {
+  width: 14px; height: 14px; border-radius: 3px; display: block; flex: 0 0 auto;
+}
+
+/* Un logo fourni remplace le nom composé, sans changer la géométrie de la carte. */
+.partenaire img { max-height: 46px; width: auto; margin: 0 auto; }
+
+/* ── Compétitions ────────────────────────────────────────────── */
+
+/* Une épreuve = une carte autonome : le visiteur cherche « quand se joue le
+   championnat jeunes », pas un tableau comparatif. Le format en-tête + corps
+   permet de lire le nom et la période sans entrer dans le détail. */
+.epreuves { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.epreuve {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.epreuve-tete {
+  background: var(--creme); padding: 20px 24px; border-bottom: 1px solid var(--lisere);
+  border-top: 4px solid var(--rouge);
+}
+.epreuve-tete h3 { font-size: 19px; margin: 0; }
+.epreuve-tete .periode {
+  display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 700;
+  color: var(--rouge-texte); text-transform: uppercase; letter-spacing: .04em;
+}
+.epreuve-corps { padding: 22px 24px; flex: 1; }
+.epreuve-corps p { font-size: 15.5px; }
+.epreuve-corps dl { margin: 16px 0 0; font-size: 15px; }
+.epreuve-corps dt {
+  font-weight: 700; color: var(--gris); font-size: 13px;
+  text-transform: uppercase; letter-spacing: .04em; margin-top: 12px;
+}
+.epreuve-corps dd { margin: 3px 0 0; }
+
+/* Palmarès : le résultat prime sur le nom de l'épreuve, il passe donc en
+   premier et en serif, comme les chiffres-clés du reste du site. */
+.palmares { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+.resultat {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  padding: 22px 20px; border-left: 4px solid var(--rouge);
+}
+.resultat .rang {
+  font-family: var(--serif); font-size: 21px; color: var(--rouge-texte);
+  font-weight: 600; line-height: 1.25;
+}
+.resultat .qui { font-weight: 700; font-size: 16px; margin-top: 8px; }
+.resultat .ou { color: var(--gris); font-size: 14.5px; margin-top: 4px; }
+
+/* ── Galerie ─────────────────────────────────────────────────── */
+
+.albums { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.album {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  overflow: hidden;
+}
+/* Emplacement photo tant qu'aucune image n'est fournie : la vignette garde sa
+   place dans la grille, donc l'ajout d'une vraie photo ne déplacera rien. */
+.album-vignette {
+  aspect-ratio: 4 / 3; background: var(--creme);
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--lisere); color: var(--rouge); opacity: .55;
+}
+.album-vignette img { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+.album-corps { padding: 20px 22px; }
+.album-corps h3 { font-size: 18px; margin-bottom: 6px; }
+.album-corps p { font-size: 14.5px; color: var(--gris); }
+
+/* ── Pages légales ───────────────────────────────────────────── */
+
+/* Ces textes se lisent en continu et se citent par article. La numérotation
+   automatique évite qu'un ajout d'article oblige à renuméroter à la main —
+   source classique de textes légaux incohérents. */
+.texte-legal { counter-reset: article; }
+.texte-legal > section { margin-top: 40px; }
+.texte-legal > section > h2 {
+  font-size: 22px; padding-bottom: 10px; border-bottom: 2px solid var(--lisere);
+}
+.texte-legal > section > h2::before {
+  counter-increment: article; content: counter(article) ". ";
+  color: var(--rouge); font-variant-numeric: tabular-nums;
+}
+.texte-legal h3 { font-size: 17px; margin-top: 24px; }
+.texte-legal p, .texte-legal li { font-size: 16px; line-height: 1.7; }
+.texte-legal ul { margin: 12px 0; padding-left: 1.25em; }
+.texte-legal li { margin-bottom: 8px; }
+.texte-legal li::marker { color: var(--rouge); }
+.texte-legal dl { margin: 14px 0; }
+.texte-legal dt { font-weight: 700; margin-top: 14px; }
+.texte-legal dd { margin: 4px 0 0; color: var(--gris); }
+
+.maj {
+  background: var(--creme); border-radius: var(--r-md); padding: 16px 20px;
+  font-size: 14.5px; color: var(--gris); margin-top: 40px;
+  border-left: 4px solid var(--lisere);
+}
+
+/* Tableau des cookies / des durées : il porte de la donnée, pas de la mise en
+   page. Le conteneur défile seul en petite largeur pour que la page, elle, ne
+   défile jamais horizontalement. */
+.tableau-legal { overflow-x: auto; margin: 18px 0; }
+.tableau-legal table { border-collapse: collapse; width: 100%; min-width: 480px; font-size: 15px; }
+.tableau-legal th, .tableau-legal td {
+  text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--lisere);
+  vertical-align: top;
+}
+.tableau-legal th { background: var(--creme); font-size: 13.5px; text-transform: uppercase; letter-spacing: .04em; }
+.tableau-legal tr:last-child td { border-bottom: 0; }
+
+/* Libellé réservé aux lecteurs d'écran : le <caption> d'un tableau donne son
+   contexte à qui ne voit pas les en-têtes de colonnes, mais ferait doublon
+   avec le titre juste au-dessus pour qui voit la page. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S'inscrire — Tennis Club Issois</title>
+  <meta name="description" content="Tarifs 2026-2027 du Tennis Club Issois : licence, adhésion, cours collectifs, cartes vacances et tickets horaires. Simulez le coût de votre inscription et découvrez comment déposer votre dossier.">
+  <link rel="canonical" href="https://tennisclubissois.fr/inscription.html">
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/icone-tci.png">
+  <meta name="theme-color" content="#C62222">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="saut-contenu" href="#contenu">Aller au contenu principal</a>
+
+<header class="entete">
+  <div class="entete-inner">
+    <a class="marque" href="/">
+      <img src="img/logo-tci.png" srcset="img/logo-tci.png 1x, img/logo-tci@2x.png 2x"
+           width="220" height="99" alt="Tennis Club Issois">
+      <span class="marque-lieu">Is-sur-Tille · Côte-d'Or</span>
+    </a>
+
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav"
+            aria-label="Ouvrir le menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="/">Accueil</a>
+      <a href="/le-club.html">Le club</a>
+      <a href="/ecole-de-tennis.html">École de tennis</a>
+      <a href="/competitions.html">Compétitions</a>
+      <a href="/galerie.html">Galerie</a>
+      <a href="/partenaires.html">Partenaires</a>
+      <a href="/contact.html">Contact</a>
+      <a class="btn btn-plein" href="/inscription.html" aria-current="page">S'inscrire</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="hero hero-page">
+    <div class="hero-lignes" aria-hidden="true">
+      <span class="l-h1"></span><span class="l-h2"></span>
+      <span class="l-h3"></span><span class="l-h4"></span>
+      <span class="l-v1"></span><span class="l-v2"></span><span class="l-v3"></span>
+      <span class="l-filet"></span>
+    </div>
+    <div class="hero-inner">
+      <p class="fil"><a href="/">Accueil</a> · S'inscrire</p>
+      <h1>Nous rejoindre</h1>
+      <p class="hero-texte">
+        L'adhésion court du <b>1<sup>er</sup> octobre 2026 au 30 septembre 2027</b>.
+        Elle comprend la licence FFT, l'accès aux courts, et les cours si vous
+        en prenez.
+      </p>
+    </div>
+  </section>
+
+  <div class="contenu">
+    <nav class="sommaire" aria-label="Sur cette page">
+      <a href="#etapes">Comment faire</a>
+      <a href="#combien">Combien ça coûte</a>
+      <a href="#tarifs">Tous les tarifs</a>
+      <a href="#ponctuel">Venir sans adhérer</a>
+      <a href="#dossier">Le dossier</a>
+      <a href="#deposer">Où déposer</a>
+      <a href="#paiement">Payer</a>
+    </nav>
+  </div>
+
+  <!-- ── Les 3 étapes ──────────────────────────────────────── -->
+  <section class="section" id="etapes">
+    <div class="contenu">
+      <div class="section-tete">
+        <p class="surtitre">En pratique</p>
+        <h2>S'inscrire en trois étapes</h2>
+      </div>
+
+      <div class="etapes">
+        <div class="etape-carte">
+          <h3>Choisir sa formule</h3>
+          <p>Adhésion seule pour jouer librement, ou adhésion avec cours collectifs.
+             Le simulateur ci-dessous vous donne le montant exact.</p>
+        </div>
+        <div class="etape-carte">
+          <h3>Remplir le dossier</h3>
+          <p>La fiche d'inscription, l'attestation de santé et le règlement.
+             Aucun certificat médical n'est demandé.</p>
+        </div>
+        <div class="etape-carte">
+          <h3>Le déposer</h3>
+          <p>Au club-house le samedi matin, au forum des associations,
+             par courrier ou par e-mail.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Simulateur ────────────────────────────────────────── -->
+  <section class="section section-doux" id="combien">
+    <div class="contenu">
+      <div class="section-tete">
+        <p class="surtitre">Sans surprise</p>
+        <h2>Combien ça coûte&nbsp;?</h2>
+        <p>Trois éléments composent le prix&nbsp;: la <b>licence FFT</b>, l'<b>adhésion
+           au club</b>, et les <b>cours</b> si vous en prenez. Choisissez votre
+           situation, le total s'affiche.</p>
+      </div>
+
+      <div class="simulateur" id="simulateur">
+        <div class="simu">
+          <div>
+            <div class="simu-champ">
+              <label for="simu-profil">Qui s'inscrit&nbsp;?</label>
+              <select id="simu-profil">
+                <option value="mini">Un enfant né en 2020 ou après</option>
+                <option value="jeune" selected>Un jeune né entre 2009 et 2019</option>
+                <option value="adulte">Un adulte né en 2008 ou avant</option>
+                <option value="demandeur">Un adulte demandeur d'emploi</option>
+              </select>
+            </div>
+
+            <div class="simu-champ">
+              <label for="simu-cours">Avec des cours&nbsp;?</label>
+              <select id="simu-cours">
+                <option value="aucun">Sans cours — jeu libre uniquement</option>
+                <option value="mini">Mini-tennis, 1 cours par semaine</option>
+                <option value="un" selected>1 cours par semaine</option>
+                <option value="deux">2 cours par semaine</option>
+                <option value="deuxCompet">2 cours dont 1 compétition</option>
+                <option value="trois">3 cours par semaine</option>
+              </select>
+            </div>
+
+            <div class="simu-champ">
+              <label id="lbl-acces">Accès aux courts</label>
+              <div class="simu-cases" role="group" aria-labelledby="lbl-acces">
+                <label><input type="checkbox" id="simu-badge"> Badge du court couvert</label>
+                <label><input type="checkbox" id="simu-cle"> Clé des courts extérieurs</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="simu-resultat">
+            <h3>Votre inscription</h3>
+            <ul class="simu-lignes" id="simu-lignes"></ul>
+            <div class="simu-total">
+              <span class="lbl">Total</span>
+              <span class="val" id="simu-total">—</span>
+            </div>
+            <p class="simu-note" id="simu-fractionnement"></p>
+            <p class="simu-caution" id="simu-cautions" hidden></p>
+          </div>
+        </div>
+      </div>
+
+      <p style="color:var(--gris);font-size:15px;margin-top:20px">
+        <b>Famille de trois personnes ou plus&nbsp;?</b> L'adhésion passe à
+        <b>125 €</b> pour l'ensemble du foyer, dont au moins un adulte, au lieu
+        du cumul des adhésions individuelles. Les licences et les cours restent
+        dus par personne&nbsp;: écrivez-nous pour le calcul exact.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Tarifs détaillés ──────────────────────────────────── -->
+  <section class="section" id="tarifs">
+    <div class="contenu">
+      <div class="section-tete">
+        <p class="surtitre">Saison 2026-2027</p>
+        <h2>Tous les tarifs</h2>
+        <p>La licence FFT est obligatoire pour pratiquer&nbsp;: elle couvre
+           l'assurance et permet de disputer les championnats.</p>
+      </div>
+
+      <div class="grille-tarifs">
+        <div class="tarifs">
+          <table>
+            <caption>Licence FFT — obligatoire</caption>
+            <thead><tr><th scope="col">Année de naissance</th><th scope="col">Montant</th></tr></thead>
+            <tbody>
+              <tr><td>2020 et après</td><td>13 €</td></tr>
+              <tr><td>De 2009 à 2019</td><td>23 €</td></tr>
+              <tr><td>2008 et avant</td><td>33 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tarifs">
+          <table>
+            <caption>Adhésion au club</caption>
+            <thead><tr><th scope="col">Situation</th><th scope="col">Montant</th></tr></thead>
+            <tbody>
+              <tr><td>Jeune <span class="precision">Né en 2009 ou après</span></td><td>40 €</td></tr>
+              <tr><td>Adulte</td><td>65 €</td></tr>
+              <tr><td>Demandeur d'emploi <span class="precision">Justificatif à fournir</span></td><td>40 €</td></tr>
+              <tr><td>Famille <span class="precision">3 personnes et plus, dont 1 adulte</span></td><td>125 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grille-tarifs" style="margin-top:20px">
+        <div class="tarifs">
+          <table>
+            <caption>Cours collectifs</caption>
+            <thead><tr><th scope="col">Formule</th><th scope="col">Montant</th></tr></thead>
+            <tbody>
+              <tr><td>Mini-tennis <span class="precision">1 cours par semaine</span></td><td>120 €</td></tr>
+              <tr><td>1 cours par semaine</td><td>200 €</td></tr>
+              <tr><td>2 cours par semaine</td><td>300 €</td></tr>
+              <tr><td>2 cours dont 1 compétition</td><td>400 €</td></tr>
+              <tr><td>3 cours par semaine</td><td>400 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tarifs">
+          <table>
+            <caption>Accès aux courts</caption>
+            <thead><tr><th scope="col">Élément</th><th scope="col">Montant</th></tr></thead>
+            <tbody>
+              <tr><td>Badge du court couvert <span class="precision">Caution, restituée au retour</span></td><td>20 €</td></tr>
+              <tr><td>Clé des courts extérieurs <span class="precision">Caution, restituée au retour</span></td><td>10 €</td></tr>
+              <tr><td>Jeton d'éclairage <span class="precision">Par heure</span></td><td>2 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p style="color:var(--gris);font-size:15px;margin-top:20px">
+        Les cautions ne sont pas des frais&nbsp;: elles vous sont rendues quand vous
+        restituez le badge ou la clé. Ces derniers se retirent au club-house le
+        samedi matin, ou sur rendez-vous.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Formules ponctuelles ──────────────────────────────── -->
+  <section class="section section-doux" id="ponctuel">
+    <div class="contenu">
+      <div class="section-tete">
+        <p class="surtitre">Sans engagement</p>
+        <h2>Venir jouer sans adhérer</h2>
+        <p>De passage, en vacances, ou simplement envie d'essayer avant de
+           s'engager pour l'année&nbsp;: le club propose des formules courtes.</p>
+      </div>
+
+      <div class="grille-tarifs">
+        <div class="tarifs">
+          <table>
+            <caption>Cartes vacances — du 15 avril au 30 septembre</caption>
+            <thead><tr><th scope="col">Formule</th><th scope="col">Montant</th></tr></thead>
+            <tbody>
+              <tr><td>Une semaine <span class="precision">Par personne, adulte ou jeune</span></td><td>15 €</td></tr>
+              <tr><td>Été complet <span class="precision">Du 1ᵉʳ juillet au 31 août</span></td><td>45 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tarifs">
+          <table>
+            <caption>Tickets horaires</caption>
+            <thead><tr><th scope="col">Formule</th><th scope="col">Montant</th></tr></thead>
+            <tbody>
+              <tr><td>Location d'un court <span class="precision">1 heure, jusqu'à 4 joueurs</span></td><td>10 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Le dossier ────────────────────────────────────────── -->
+  <section class="section" id="dossier">
+    <div class="contenu">
+      <div class="section-tete">
+        <p class="surtitre">Les pièces</p>
+        <h2>Constituer son dossier</h2>
+      </div>
+
+      <div class="bonne-nouvelle">
+        <strong>Plus besoin de certificat médical.</strong>
+        <p style="margin-top:6px;font-size:15px">
+          Depuis la saison 2026-2027, un questionnaire de santé remplace le
+          certificat. <b>Il reste chez vous</b>&nbsp;: le club n'en reçoit pas
+          copie et n'en conserve aucune. Seule une attestation signée, indiquant
+          que le questionnaire a été rempli, est à joindre au dossier.
+        </p>
+      </div>
+
+      <div class="pieces">
+        <div class="piece">
+          <h3>La fiche d'inscription</h3>
+          <p>Renseignée et signée. Pour un adhérent mineur, elle est signée
+             par le représentant légal.</p>
+          <p>Elle comporte deux cases facultatives concernant les photographies&nbsp;:
+             vous êtes libre de les refuser, sans conséquence sur l'adhésion.</p>
+        </div>
+
+        <div class="piece">
+          <h3>L'attestation de santé</h3>
+          <p><b>Né en 2009 ou après&nbsp;:</b> questionnaire de santé destiné aux
+             mineurs, à remplir en famille. Si toutes les réponses sont négatives,
+             vous signez l'attestation correspondante.</p>
+          <p><b>Né en 2008 ou avant&nbsp;:</b> attestation à télécharger sur le site
+             de la Fédération Française de Tennis.</p>
+        </div>
+
+        <div class="piece">
+          <h3>Le règlement</h3>
+          <p>Par chèque, espèces, virement, chèques vacances ou coupons sport
+             ANCV. Les aides CAF, Pass'Sport et Passeport vacances du CCAS sont
+             acceptées.</p>
+          <p>Le paiement peut être fractionné en 3 ou 4 fois.</p>
+        </div>
+
+        <div class="piece">
+          <h3>Le justificatif, si besoin</h3>
+          <p>Pour le tarif demandeur d'emploi, joindre une attestation
+             en cours de validité.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Où déposer ────────────────────────────────────────── -->
+  <section class="section section-doux" id="deposer">
+    <div class="contenu">
+      <div class="section-tete">
+        <p class="surtitre">Quatre possibilités</p>
+        <h2>Où déposer son dossier</h2>
+      </div>
+
+      <div class="depots">
+        <div class="depot">
+          <p class="quand">Tous les samedis</p>
+          <h3>Au club-house</h3>
+          <p>Entre 10 h et 12 h, pendant les permanences. C'est aussi le moment
+             pour retirer un badge ou une clé.</p>
+        </div>
+
+        <div class="depot">
+          <p class="quand">5 septembre 2026</p>
+          <h3>Au forum des associations</h3>
+          <p>Le club y tient un stand. L'occasion de poser toutes vos questions
+             avant de vous décider.</p>
+        </div>
+
+        <div class="depot">
+          <p class="quand">Avant le 5 septembre</p>
+          <h3>Par courrier</h3>
+          <p>Tennis Club Issois — Jean-Michel Vauthrin<br>
+             4 rue des Carrières<br>21120 Is-sur-Tille</p>
+        </div>
+
+        <div class="depot">
+          <p class="quand">À tout moment</p>
+          <h3>Par e-mail</h3>
+          <p><a href="mailto:tennisclubissois@live.fr">tennisclubissois@live.fr</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Paiement ──────────────────────────────────────────── -->
+  <section class="section" id="paiement">
+    <div class="contenu">
+      <div class="mot">
+        <div>
+          <p class="surtitre">Règlement</p>
+          <h2 style="font-size:clamp(24px,3vw,32px);margin-top:10px">Payer en une, trois ou quatre fois</h2>
+          <p style="margin-top:14px">Le club accepte le <b>chèque</b>, les
+             <b>espèces</b>, le <b>virement</b>, les <b>chèques vacances et coupons
+             sport ANCV</b>, ainsi que les aides <b>CAF</b>, <b>Pass'Sport</b> et
+             <b>Passeport vacances</b> du CCAS.</p>
+          <p style="margin-top:14px">Le fractionnement en 3 ou 4 fois est possible
+             sans frais. Précisez-le simplement sur la fiche d'inscription.</p>
+          <p style="margin-top:14px"><b>Un rappel utile&nbsp;:</b> pour des raisons
+             d'assurance, l'accès aux courts n'est autorisé qu'une fois la licence
+             réglée.</p>
+        </div>
+
+        <div class="encart-cours">
+          <h3>Payer en ligne</h3>
+          <p>Le club utilise la plateforme sécurisée du Crédit Mutuel. Vous
+             réglez par carte, et le dossier papier suit.</p>
+          <a class="btn btn-blanc" href="https://www.payasso.fr/tennis-club-issois/inscription-au-tennis-club-issois" rel="noopener">
+            Régler mon inscription</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="appel">
+    <div class="appel-lignes" aria-hidden="true">
+      <span class="a-h1"></span><span class="a-h2"></span>
+      <span class="a-v1"></span><span class="a-v2"></span><span class="a-filet"></span>
+    </div>
+    <div class="contenu">
+      <h2>Une question avant de vous décider&nbsp;?</h2>
+      <p>Un essai est possible pour se faire une idée. Appelez-nous ou passez
+         au club-house un samedi matin, on trouvera un créneau.</p>
+      <div class="appel-actions">
+        <a class="btn btn-plein" href="tel:+33615761192">06 15 76 11 92</a>
+        <a class="btn btn-ligne" href="/contact.html">Nous écrire</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="contenu">
+    <div class="pied-grille">
+      <div>
+        <h4>Tennis Club Issois</h4>
+        <address>
+          Allée des Soupirs<br>
+          21120 Is-sur-Tille<br>
+          <a href="mailto:tennisclubissois@live.fr">tennisclubissois@live.fr</a><br>
+          <a href="tel:+33615761192">06 15 76 11 92</a>
+        </address>
+      </div>
+
+      <div>
+        <h4>Le club</h4>
+        <ul>
+          <li><a href="/le-club.html">Qui sommes-nous</a></li>
+          <li><a href="/le-club.html#installations">Installations</a></li>
+          <li><a href="/le-club.html#acces">Accès et plan</a></li>
+          <li><a href="/le-club.html#reglements">Règlements et chartes</a></li>
+          <li><a href="/galerie.html">Galerie</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Pratique</h4>
+        <ul>
+          <li><a href="/inscription.html">Tarifs et inscription</a></li>
+          <li><a href="/ecole-de-tennis.html#planning">Groupes et planning</a></li>
+          <li><a href="https://tenup.fft.fr" rel="noopener">Réserver un court (Ten'Up)</a></li>
+          <li><a href="/contact.html#liens">Liens utiles</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pied-bas">
+      <p>© 2026 Tennis Club Issois — Association loi 1901</p>
+      <p class="pied-legal">
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <a href="/donnees-personnelles.html">Données personnelles</a>
+        <a href="/cookies.html">Cookies</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/tarifs.js"></script>
+<script src="js/menu.js"></script>
+<script>
+  (function () {
+    // Le simulateur n'est révélé que si le script tourne : sans JavaScript,
+    // un formulaire inerte serait pire qu'absent. Les tableaux de tarifs,
+    // eux, restent visibles en toutes circonstances.
+    var bloc = document.getElementById('simulateur');
+    if (!bloc || typeof calculerInscription !== 'function') return;
+    bloc.classList.add('actif');
+
+    var profil = document.getElementById('simu-profil');
+    var cours = document.getElementById('simu-cours');
+    var badge = document.getElementById('simu-badge');
+    var cle = document.getElementById('simu-cle');
+    var sLignes = document.getElementById('simu-lignes');
+    var sTotal = document.getElementById('simu-total');
+    var sFrac = document.getElementById('simu-fractionnement');
+    var sCaut = document.getElementById('simu-cautions');
+
+    function euros(n) {
+      return (Math.round(n * 100) / 100).toFixed(2).replace('.00', '').replace('.', ',') + ' €';
+    }
+
+    function rendre() {
+      var r = calculerInscription(profil.value, cours.value, {
+        badgeCouvert: badge.checked,
+        cleExterieur: cle.checked
+      });
+
+      sLignes.innerHTML = r.lignes.map(function (l) {
+        return '<li><span>' + l.libelle + '</span><span>' + euros(l.prix) + '</span></li>';
+      }).join('');
+
+      sTotal.textContent = euros(r.total);
+
+      // « par mois » affirmerait une mensualisation que le club n'annonce
+      // nulle part : il propose 1, 3 ou 4 fois, sans préciser l'échéancier.
+      // « environ » parce que la dernière échéance absorbe les centimes.
+      sFrac.textContent = 'Soit environ ' + euros(echeances(r.total, 3)[0])
+        + ' en 3 fois, ou ' + euros(echeances(r.total, 4)[0]) + ' en 4 fois.';
+
+      if (r.cautions.length) {
+        sCaut.hidden = false;
+        sCaut.innerHTML = '<b>+ ' + euros(r.totalCautions) + ' de caution</b> ('
+          + r.cautions.map(function (c) { return c.libelle.toLowerCase(); }).join(', ')
+          + ') — restituée au retour, ce n\'est pas une dépense.';
+      } else {
+        sCaut.hidden = true;
+      }
+    }
+
+    [profil, cours, badge, cle].forEach(function (el) {
+      el.addEventListener('change', rendre);
+    });
+    rendre();
+  })();
+</script>
+
+</body>
+</html>
