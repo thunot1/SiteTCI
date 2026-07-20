@@ -1015,3 +1015,45 @@ a.vitrine-carte:hover {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
+
+/* ── Bandeau « site en cours de construction » ───────────────── */
+
+/* Provisoire, à supprimer avec son bloc HTML dans `index.html` quand le site
+   deviendra le site officiel du club.
+   Il passe AVANT l'en-tête collant, donc il défile avec la page plutôt que de
+   manger en permanence la hauteur d'écran d'un téléphone. */
+.chantier {
+  background: var(--rouge-fond);
+  color: #fff;
+  border-bottom: 5px solid var(--encre);
+}
+.chantier-inner {
+  max-width: var(--large); margin: 0 auto;
+  padding: 30px 24px 34px; text-align: center;
+}
+.chantier-titre {
+  font-family: var(--serif); font-weight: 700;
+  /* De 27 px sur un petit téléphone à 46 px sur grand écran : « très gros »
+     doit le rester à toutes les largeurs, sans jamais déborder. */
+  font-size: clamp(27px, 5.4vw, 46px);
+  line-height: 1.15; margin: 0;
+  text-transform: uppercase; letter-spacing: .01em;
+}
+.chantier-texte {
+  margin: 12px 0 0; font-size: clamp(16px, 2vw, 19px);
+  color: #fff; opacity: .95;
+}
+/* Bouton plein plutôt que lien souligné : c'est l'action attendue de la
+   plupart des visiteurs tant que le site n'est pas en service. Le blanc sur
+   rouge-fond donne 5,75:1, et la hauteur dépasse les 44 px recommandés. */
+.chantier-lien {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 20px; padding: 15px 30px;
+  background: #fff; color: var(--rouge-texte);
+  font-weight: 700; font-size: clamp(16px, 1.9vw, 19px);
+  border-radius: 999px; text-decoration: none;
+  box-shadow: 0 3px 0 rgba(0,0,0,.18);
+}
+.chantier-lien:hover { background: var(--creme); }
+.chantier-lien:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.chantier-lien svg { flex: 0 0 auto; }
