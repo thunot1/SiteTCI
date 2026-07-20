@@ -174,6 +174,31 @@ par le lien vers OpenStreetMap.
 Si vous préférez malgré tout publier la photo satellite, dites-le : elle est
 prête (`img/plan-acces.jpg`, 154 Ko).
 
+## Au lancement — ce qu'il faudra retirer
+
+Le site est en ligne sur `https://tennisclubissois.fr` mais se présente comme
+**en construction**, et renvoie au site Holdsport. Tant que c'est le cas, il
+est volontairement tenu à l'écart des moteurs de recherche.
+
+Tout ce qui est provisoire porte la mention `CHANTIER` — un
+`grep -r CHANTIER` les retrouve tous. À faire le jour du lancement :
+
+1. **Le bandeau de chantier** : le bloc `<aside class="chantier">` au début de
+   `index.html`, et la section `.chantier` à la fin de `css/style.css`.
+2. **Les balises `noindex`** : la ligne
+   `<meta name="robots" content="noindex, follow">` des 11 pages. Les trois
+   pages légales retrouveront leur `content="index, follow"` d'origine.
+3. **Le `robots.txt`** : rétablir la déclaration du `Sitemap:` et retirer le
+   commentaire d'explication.
+
+> L'exploration reste **autorisée** dans `robots.txt` pendant les travaux, et
+> ce n'est pas un oubli : un robot doit pouvoir entrer pour lire la balise
+> `noindex`. Un `Disallow: /` l'en empêcherait, et les adresses pourraient
+> rester listées dans les résultats — l'inverse du but recherché.
+
+Ce n'est qu'ensuite qu'il faudra déclarer le site dans la Google Search
+Console et y soumettre le sitemap.
+
 ## Reste à faire
 
 - **Remplacer le planning d'exemple** par les données réelles (voir plus haut)
@@ -185,3 +210,4 @@ prête (`img/plan-acces.jpg`, 154 Ko).
   l'image — mineurs en particulier
 - Compléter les informations listées plus haut
 - Alimenter les pages depuis MyTCI (étape suivante)
+- **Retirer le mode chantier** une fois le site complet (voir ci-dessus)
