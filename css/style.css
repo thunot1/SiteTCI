@@ -271,6 +271,17 @@ a { color: var(--rouge-texte); }
   background: #fff; border: 1px solid var(--lisere);
   border-radius: var(--r-md); padding: 24px; border-top: 4px solid var(--rouge);
 }
+
+/* Photo facultative, générée depuis MyTCI. Le padding de la carte est repris
+   par le contenu pour que l'image aille bord à bord ; le ratio fixe empêche la
+   grille de sauter pendant le chargement, et une carte sans photo garde
+   exactement la mise en forme d'avant. */
+.actu.avec-photo { padding: 0; overflow: hidden; }
+.actu.avec-photo > img {
+  width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block;
+  border-bottom: 1px solid var(--lisere);
+}
+.actu.avec-photo .actu-corps { padding: 22px 24px 24px; }
 .actu time { font-size: 13px; font-weight: 700; color: var(--rouge-texte); letter-spacing: .04em; }
 .actu h3 { font-size: 19px; margin: 8px 0 8px; }
 .actu p { color: var(--gris); font-size: 15.5px; }

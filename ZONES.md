@@ -62,3 +62,23 @@ base. Le nombre d'éléments peut varier.
 | `appel.texte` | simple | Appel final — paragraphe | saisie libre |
 
 Les autres pages seront ajoutées ici au fur et à mesure.
+
+## Publication depuis MyTCI
+
+MyTCI relit le fichier sur GitHub, remplace le contenu entre les repères, et
+réécrit le fichier. Coolify reconstruit ensuite le site. Conséquences :
+
+- **Ne jamais supprimer un repère** d'une page : MyTCI signalerait la clé comme
+  introuvable et le contenu correspondant ne serait pas publié.
+- **La mise en page reste maîtrisée ici.** MyTCI n'écrit que dans les zones ;
+  les balises, les classes et le CSS appartiennent au dépôt. Modifier l'allure
+  d'une carte d'actualité se fait dans `css/style.css`, pas dans MyTCI.
+- **Les photos d'actualités** sont poussées par MyTCI dans `img/actus/`, une
+  image par actualité, nommée d'après son identifiant. Ne pas les modifier à la
+  main : elles sont réécrites à chaque publication.
+- Modifier une page directement dans le dépôt reste possible ; MyTCI relit le
+  fichier à chaque publication, il ne travaille jamais sur une copie périmée.
+
+Variables d'environnement attendues côté MyTCI : `GITHUB_TOKEN` (jeton avec
+droit d'écriture sur ce dépôt), et si besoin `SITE_REPO` (défaut
+`thunot1/SiteTCI`) et `SITE_BRANCH` (défaut `main`).
