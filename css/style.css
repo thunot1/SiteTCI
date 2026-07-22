@@ -463,8 +463,11 @@ a { color: var(--rouge-texte); }
 .jour-tete h3 { font-size: 22px; }
 .jour-tete .nb { font-size: 13.5px; color: var(--gris); }
 
+/* Trois colonnes depuis le retrait du court : l'information n'était pas
+   fiable d'une semaine à l'autre (rotation les jours de pluie), et elle
+   occupait une colonne entière pour une donnée que personne ne vérifiait. */
 .creneau {
-  display: grid; grid-template-columns: 120px 1fr 190px 130px;
+  display: grid; grid-template-columns: 120px 1fr 200px;
   gap: 16px; align-items: center;
   padding: 14px 4px; border-bottom: 1px solid var(--lisere);
 }
@@ -477,12 +480,10 @@ a { color: var(--rouge-texte); }
 .creneau .g { font-weight: 700; }
 .creneau .g small { display: block; font-weight: 400; color: var(--gris); font-size: 13.5px; }
 .creneau .m { color: var(--gris); font-size: 15px; }
-.creneau .c { font-size: 13.5px; color: var(--gris); text-align: right; }
 
 @media (max-width: 820px) {
   .creneau { grid-template-columns: 96px 1fr; gap: 6px 14px; padding: 16px 4px; }
-  .creneau .m, .creneau .c { grid-column: 2; text-align: left; }
-  .creneau .c { font-size: 13px; }
+  .creneau .m { grid-column: 2; text-align: left; }
 }
 
 /* Bandeau d'avertissement — données non définitives. Volontairement voyant :

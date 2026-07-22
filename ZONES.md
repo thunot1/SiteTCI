@@ -78,6 +78,28 @@ base. Le nombre d'éléments peut varier.
 | `mot.nom` · `mot.fonction` | simple | Signature |
 | `appel.titre` · `appel.texte` | simple | Appel final |
 
+### `ecole-de-tennis.html` (École de tennis)
+
+| Clé | Type | Contenu |
+|-----|------|---------|
+| `hero.titre` · `hero.texte` | simple | Bandeau |
+| `planning.saison` | simple | Saison affichée au-dessus du planning |
+| `planning.intro` | simple | Planning — phrase d'introduction |
+| `planning.avertissement` | simple | Bandeau orange — **à vider** quand le vrai planning est saisi |
+| `planning` | liste | Créneaux (jour, heure, durée, groupe, précision, moniteur) |
+| `equipe.intro` | simple | Moniteurs — introduction |
+| `moniteurs` | liste | Moniteurs (nom, rôle) — initiales calculées |
+| `fonctionnement.texte1` · `.texte2` | simple | Comment l'école fonctionne |
+| `appel.titre` · `appel.texte` | simple | Appel final |
+
+> **Le planning se saisit à plat**, un créneau par ligne avec son jour : c'est
+> la forme dans laquelle `_source/extraire-planning.sql` sort les cours de
+> MyTCI. Le regroupement par journée et l'ordre de la semaine sont
+> reconstitués à la publication.
+>
+> **La colonne « Court » a été retirée** (HTML, CSS et générateur) : la
+> rotation les jours de pluie la rendait fausse une semaine sur deux.
+
 ### `contact.html` (Contact)
 
 | Clé | Type | Contenu |
