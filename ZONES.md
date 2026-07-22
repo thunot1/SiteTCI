@@ -78,6 +78,27 @@ base. Le nombre d'éléments peut varier.
 | `mot.nom` · `mot.fonction` | simple | Signature |
 | `appel.titre` · `appel.texte` | simple | Appel final |
 
+### `partenaires.html` (Partenaires)
+
+| Clé | Type | Contenu |
+|-----|------|---------|
+| `hero.titre` · `hero.texte` | simple | Bandeau |
+| `partenaires.intro` | simple | Nos partenaires — introduction |
+| `publics.titre` · `publics` | simple / liste | Collectivités publiques |
+| `prives.titre` · `prives` | simple / liste | Entreprises partenaires |
+| `logos.note` | simple | Note sur les logos manquants — **à vider** quand ils sont fournis |
+| `pourquoi.intro` · `arguments` | simple / liste | Arguments chiffrés |
+| `regle.titre` · `regle.texte` | simple | Encadré « jeunes du territoire » |
+| `visibilite.intro` | simple | Ce que nous proposons |
+| `devenir.intro` · `etapes` | simple / liste | La démarche |
+| `appel.titre` · `appel.texte` | simple | Appel final |
+
+> **Une carte partenaire prend quatre formes** selon ce qui est saisi : avec ou
+> sans logo, cliquable ou non. Le fichier logo doit exister dans
+> `img/partenaires/` du dépôt avant d'être référencé. Le champ « secteur »
+> accepte de la mise en forme en ligne (la pastille « à préciser ») : il est
+> assaini, pas échappé.
+
 ### `ecole-de-tennis.html` (École de tennis)
 
 | Clé | Type | Contenu |
