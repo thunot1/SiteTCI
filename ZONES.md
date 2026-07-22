@@ -61,7 +61,30 @@ base. Le nombre d'éléments peut varier.
 | `appel.titre` | simple | Appel final — titre | saisie libre |
 | `appel.texte` | simple | Appel final — paragraphe | saisie libre |
 
+### `le-club.html` (Le club)
+
+| Clé | Type | Contenu |
+|-----|------|---------|
+| `hero.titre` | simple | Bandeau — titre de la page |
+| `hero.texte` | simple | Bandeau — paragraphe |
+| `installations.intro` | simple | Installations — phrase d'introduction |
+| `clubhouse.permanence` | simple | Horaires de permanence du club-house |
+| `organisation.intro` | simple | Organisation — phrase d'introduction |
+| `bureau` | liste | Membres du bureau (fonction + nom) |
+| `conseil` | liste | Conseil d'administration (noms) |
+| `commissions` | liste | Commissions (nom + responsable) |
+| `mot.saison` | simple | Mot du président — surtitre de saison |
+| `mot.lettre` | simple | Mot du président — corps de la lettre (HTML) |
+| `mot.nom` · `mot.fonction` | simple | Signature |
+| `appel.titre` · `appel.texte` | simple | Appel final |
+
 Les autres pages seront ajoutées ici au fur et à mesure.
+
+> **Trois endroits déclarent une zone** : le repère dans le HTML, la liste
+> blanche `_SITE_ZONES` de `server.py`, et la description `SITE_PAGES` de
+> `app-site.js`. Une divergence est silencieuse — la zone disparaît de l'écran,
+> ou son contenu n'est jamais publié. `MyTCI/tests/test_zones_coherence.py`
+> compare les trois et échoue si l'un dérive.
 
 ## Publication depuis MyTCI
 
