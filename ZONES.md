@@ -78,6 +78,27 @@ base. Le nombre d'éléments peut varier.
 | `mot.nom` · `mot.fonction` | simple | Signature |
 | `appel.titre` · `appel.texte` | simple | Appel final |
 
+### `contact.html` (Contact)
+
+| Clé | Type | Contenu |
+|-----|------|---------|
+| `hero.titre` · `hero.texte` | simple | Bandeau |
+| `joindre.email` · `joindre.tel` | simple | Descriptions des deux premières cartes |
+| `joindre.permanence` | simple | Carte club-house — horaires et services |
+| `qui.intro` | simple | Qui contacter — introduction |
+| `aiguillage` | liste | Besoin → responsable (besoin, précision, qui, complément, lien) |
+| `courrier.intro` | simple | Note sur l'adresse postale |
+| `courrier.adresse` | liste | Adresse postale, une ligne par entrée |
+| `liens.intro` | simple | Liens utiles — introduction |
+| `liens` | liste | Liens utiles (icône, nom, description, adresse) |
+| `appel.titre` · `appel.texte` | simple | Appel final |
+
+> **Ce qui n'est volontairement PAS éditable ici** : l'adresse e-mail et le
+> numéro de téléphone eux-mêmes. Ils figurent aussi dans le pied de page des
+> 12 pages du site : les modifier depuis la seule page Contact produirait une
+> incohérence pire que l'absence d'édition. Ils demandent un mécanisme de zone
+> partagée, appliquée à toutes les pages — non réalisé à ce jour.
+
 Les autres pages seront ajoutées ici au fur et à mesure.
 
 > **Trois endroits déclarent une zone** : le repère dans le HTML, la liste
