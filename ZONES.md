@@ -78,6 +78,30 @@ base. Le nombre d'éléments peut varier.
 | `mot.nom` · `mot.fonction` | simple | Signature |
 | `appel.titre` · `appel.texte` | simple | Appel final |
 
+### `competitions.html` (Compétitions)
+
+| Clé | Type | Contenu |
+|-----|------|---------|
+| `hero.titre` · `hero.texte` | simple | Bandeau |
+| `commencer.intro` · `regles` | simple / liste | La compétition, c'est pour qui |
+| `debut.titre` · `debut.texte` | simple | Encadré « jamais joué de match officiel » |
+| `equipes.intro` | simple | Championnats par équipes — introduction |
+| `equipes.avertissement` | simple | Bandeau orange — **à vider** quand la saison est arrêtée |
+| `epreuves-equipes` | liste | Fiches des championnats |
+| `tournois.intro` · `epreuves-tournois` | simple / liste | Tournois du club |
+| `palmares.saison` · `palmares.intro` · `palmares` | simple / liste | Résultats |
+| `rg.titre` · `rg.texte` | simple | Encadré Roland-Garros |
+| `sinscrire.intro` · `etapes` | simple / liste | Rejoindre une équipe |
+| `encadrement.intro` · `commissions` · `documents` | simple / liste | Encadrement |
+| `appel.titre` · `appel.texte` | simple | Appel final |
+
+> **Les détails d'une épreuve se saisissent en texte**, une ligne
+> `Libellé : valeur` par entrée, plutôt qu'en champs fixes : leur nombre et
+> leurs intitulés varient d'une épreuve à l'autre.
+>
+> ⚠️ **Palmarès** : ne publier le nom d'un mineur qu'avec l'accord de ses
+> représentants légaux. L'avertissement est rappelé dans l'écran d'édition.
+
 ### `partenaires.html` (Partenaires)
 
 | Clé | Type | Contenu |
