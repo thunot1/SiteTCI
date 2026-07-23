@@ -1069,3 +1069,42 @@ a.vitrine-carte:hover {
 .chantier-lien:hover { background: var(--creme); }
 .chantier-lien:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .chantier-lien svg { flex: 0 0 auto; }
+
+/* ── Formulaire de demande (page Inscription) ────────────────── */
+.formulaire {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-lg);
+  padding: 28px 30px; margin-top: 8px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.form-champ { display: flex; flex-direction: column; gap: 7px; }
+.form-champ label { font-weight: 700; font-size: 15px; }
+.form-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 620px) { .form-duo { grid-template-columns: 1fr; } }
+.formulaire input, .formulaire select, .formulaire textarea {
+  font: inherit; font-size: 16px; /* 16px : évite le zoom auto sur iOS */
+  padding: 12px 14px; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  background: var(--creme); color: var(--encre); width: 100%;
+}
+.formulaire textarea { resize: vertical; min-height: 96px; line-height: 1.55; }
+.formulaire input:focus, .formulaire select:focus, .formulaire textarea:focus {
+  outline: 3px solid var(--rouge); outline-offset: 1px; border-color: transparent;
+  background: #fff;
+}
+.form-champ .req { color: var(--rouge-texte); }
+.form-consent label {
+  display: flex; gap: 11px; align-items: flex-start;
+  font-weight: 400; font-size: 15px; line-height: 1.5; cursor: pointer;
+}
+.form-consent input { width: auto; margin-top: 3px; flex: 0 0 auto;
+  width: 20px; height: 20px; accent-color: var(--rouge-fond); }
+/* Le piège à robots n'est pas affiché — mais sans display:none, qui
+   éveille certains robots. Il sort simplement du cadre. */
+.form-piege {
+  position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;
+}
+.form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.form-actions .btn[disabled] { opacity: .6; cursor: default; }
+.form-retour { margin: 0; font-size: 15px; font-weight: 700; }
+.form-retour.ok { color: var(--vert); }
+.form-retour.ko { color: var(--rouge-texte); }
+.form-repli { margin: 0; font-size: 14px; color: var(--gris); }

@@ -78,6 +78,41 @@ base. Le nombre d'éléments peut varier.
 | `mot.nom` · `mot.fonction` | simple | Signature |
 | `appel.titre` · `appel.texte` | simple | Appel final |
 
+### `inscription.html` (Inscription)
+
+| Clé | Type | Contenu |
+|-----|------|---------|
+| `hero.titre` · `hero.texte` | simple | Bandeau |
+| `etapes` | liste | S'inscrire en trois étapes |
+| `demande.intro` | simple | Formulaire de demande — introduction |
+| `combien.intro` | simple | Simulateur — introduction |
+| `famille.note` | simple | Note « tarif famille » |
+| `sante.titre` · `sante.texte` | simple | Encadré santé |
+| `pieces` | liste | Pièces du dossier |
+| `depots` | liste | Où déposer son dossier |
+| `appel.titre` · `appel.texte` | simple | Appel final |
+
+> **Les tarifs et le simulateur ne sont pas éditables** : les montants vivent
+> dans `js/tarifs.js`, qui alimente le calcul. Les modifier ici les
+> désynchroniserait. C'est un chantier distinct.
+
+## Le formulaire de demande
+
+La page Inscription porte un **formulaire** (`js/demande.js`) qui envoie la
+demande à MyTCI (`https://app.tennisclubissois.fr/api/site/contact`), lequel la
+relaie par e-mail au bureau. **Rien n'est stocké sur ce site.** Conséquences :
+
+- **CSP** : `nginx.conf` autorise `connect-src` vers `app.tennisclubissois.fr`,
+  seule entorse au « tout provient du même serveur ».
+- **RGPD** : la page `donnees-personnelles.html` décrit ce traitement. Toute
+  modification du formulaire doit y être répercutée.
+- **Anti-abus** (côté MyTCI) : piège à robots, plafonds de longueur, quota par
+  IP, et destinataire **toujours** l'adresse du club — jamais une adresse
+  fournie dans la requête. Le champ e-mail du visiteur sert de `Reply-To`.
+- **Configuration MyTCI** : la messagerie doit être configurée (`emailFrom` /
+  `emailPassword` dans les paramètres). Destinataire = `siteContactTo` si
+  défini, sinon `emailFrom`.
+
 ### `competitions.html` (Compétitions)
 
 | Clé | Type | Contenu |

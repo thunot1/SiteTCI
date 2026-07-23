@@ -57,12 +57,12 @@
     </div>
     <div class="hero-inner">
       <p class="fil"><a href="/">Accueil</a> · S'inscrire</p>
-      <h1>Nous rejoindre</h1>
-      <p class="hero-texte">
+      <h1><!--z:hero.titre-->Nous rejoindre<!--/z--></h1>
+      <p class="hero-texte"><!--z:hero.texte-->
         L'adhésion court du <b>1<sup>er</sup> octobre 2026 au 30 septembre 2027</b>.
         Elle comprend la licence FFT, l'accès aux courts, et les cours si vous
         en prenez.
-      </p>
+      <!--/z--></p>
     </div>
   </section>
 
@@ -86,7 +86,7 @@
         <h2>S'inscrire en trois étapes</h2>
       </div>
 
-      <div class="etapes">
+      <div class="etapes"><!--zl:etapes-->
         <div class="etape-carte">
           <h3>Choisir sa formule</h3>
           <p>Adhésion seule pour jouer librement, ou adhésion avec cours collectifs.
@@ -102,7 +102,84 @@
           <p>Au club-house le samedi matin, au forum des associations,
              par courrier ou par e-mail.</p>
         </div>
+      <!--/zl--></div>
+    </div>
+  </section>
+
+  <!-- ── Demande d'inscription / de renseignements ─────────────
+       Formulaire envoyé à MyTCI (app.tennisclubissois.fr), qui le
+       relaie par e-mail au bureau. Aucune donnée n'est stockée sur ce
+       site. Voir la page « Données personnelles ». -->
+  <section class="section" id="demande">
+    <div class="contenu-etroit">
+      <div class="section-tete">
+        <p class="surtitre">Le plus simple pour commencer</p>
+        <h2>Nous écrire en un formulaire</h2>
+        <p><!--z:demande.intro-->Pas encore prêt à constituer le dossier&nbsp;? Laissez vos coordonnées&nbsp;:
+           le bureau vous recontacte, vous envoie la fiche d'inscription et répond
+           à vos questions. Une séance d'essai est possible.<!--/z--></p>
       </div>
+
+      <form class="formulaire" id="form-demande" novalidate>
+        <div class="form-champ">
+          <label for="f-profil">Qui souhaite s'inscrire&nbsp;?</label>
+          <select id="f-profil" name="profil">
+            <option value="Un enfant (né en 2020 ou après)">Un enfant né en 2020 ou après</option>
+            <option value="Un jeune (né entre 2009 et 2019)" selected>Un jeune né entre 2009 et 2019</option>
+            <option value="Un adulte">Un adulte</option>
+            <option value="Un adulte demandeur d'emploi">Un adulte demandeur d'emploi</option>
+            <option value="Une famille">Une famille (3 personnes ou plus)</option>
+          </select>
+        </div>
+
+        <div class="form-champ">
+          <label for="f-nom">Votre nom et prénom <span class="req">*</span></label>
+          <input type="text" id="f-nom" name="nom" autocomplete="name" required maxlength="120">
+        </div>
+
+        <div class="form-duo">
+          <div class="form-champ">
+            <label for="f-email">Votre e-mail <span class="req">*</span></label>
+            <input type="email" id="f-email" name="email" autocomplete="email" required maxlength="150">
+          </div>
+          <div class="form-champ">
+            <label for="f-tel">Votre téléphone</label>
+            <input type="tel" id="f-tel" name="tel" autocomplete="tel" maxlength="30">
+          </div>
+        </div>
+
+        <div class="form-champ">
+          <label for="f-message">Votre message</label>
+          <textarea id="f-message" name="message" rows="4" maxlength="2000"
+                    placeholder="Une question, une disponibilité pour un essai…"></textarea>
+        </div>
+
+        <div class="form-champ form-consent">
+          <label>
+            <input type="checkbox" id="f-consent" name="consent" required>
+            <span>J'accepte que ces informations soient transmises au bureau du club
+              pour traiter ma demande. Elles ne servent qu'à cela. En savoir plus&nbsp;:
+              <a href="/donnees-personnelles.html">Données personnelles</a>. <span class="req">*</span></span>
+          </label>
+        </div>
+
+        <!-- Piège à robots : invisible et vide pour un humain. Un envoi qui le
+             remplit est rejeté sans e-mail. -->
+        <div class="form-piege" aria-hidden="true">
+          <label>Ne pas remplir <input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-plein" id="f-envoyer">Envoyer ma demande</button>
+          <p class="form-retour" id="f-retour" role="status" aria-live="polite"></p>
+        </div>
+
+        <p class="form-repli">
+          Le formulaire ne fonctionne pas&nbsp;? Écrivez directement à
+          <a href="mailto:tennisclubissois@live.fr">tennisclubissois@live.fr</a>
+          ou appelez le <a href="tel:+33615761192">06 15 76 11 92</a>.
+        </p>
+      </form>
     </div>
   </section>
 
@@ -112,9 +189,9 @@
       <div class="section-tete">
         <p class="surtitre">Sans surprise</p>
         <h2>Combien ça coûte&nbsp;?</h2>
-        <p>Trois éléments composent le prix&nbsp;: la <b>licence FFT</b>, l'<b>adhésion
+        <p><!--z:combien.intro-->Trois éléments composent le prix&nbsp;: la <b>licence FFT</b>, l'<b>adhésion
            au club</b>, et les <b>cours</b> si vous en prenez. Choisissez votre
-           situation, le total s'affiche.</p>
+           situation, le total s'affiche.<!--/z--></p>
       </div>
 
       <div class="simulateur" id="simulateur">
@@ -164,12 +241,12 @@
         </div>
       </div>
 
-      <p style="color:var(--gris);font-size:15px;margin-top:20px">
+      <p style="color:var(--gris);font-size:15px;margin-top:20px"><!--z:famille.note-->
         <b>Famille de trois personnes ou plus&nbsp;?</b> L'adhésion passe à
         <b>125 €</b> pour l'ensemble du foyer, dont au moins un adulte, au lieu
         du cumul des adhésions individuelles. Les licences et les cours restent
         dus par personne&nbsp;: écrivez-nous pour le calcul exact.
-      </p>
+      <!--/z--></p>
     </div>
   </section>
 
@@ -290,16 +367,16 @@
       </div>
 
       <div class="bonne-nouvelle">
-        <strong>Plus besoin de certificat médical.</strong>
-        <p style="margin-top:6px;font-size:15px">
+        <strong><!--z:sante.titre-->Plus besoin de certificat médical.<!--/z--></strong>
+        <p style="margin-top:6px;font-size:15px"><!--z:sante.texte-->
           Depuis la saison 2026-2027, un questionnaire de santé remplace le
           certificat. <b>Il reste chez vous</b>&nbsp;: le club n'en reçoit pas
           copie et n'en conserve aucune. Seule une attestation signée, indiquant
           que le questionnaire a été rempli, est à joindre au dossier.
-        </p>
+        <!--/z--></p>
       </div>
 
-      <div class="pieces">
+      <div class="pieces"><!--zl:pieces-->
         <div class="piece">
           <h3>La fiche d'inscription</h3>
           <p>Renseignée et signée. Pour un adhérent mineur, elle est signée
@@ -330,7 +407,7 @@
           <p>Pour le tarif demandeur d'emploi, joindre une attestation
              en cours de validité.</p>
         </div>
-      </div>
+      <!--/zl--></div>
     </div>
   </section>
 
@@ -342,7 +419,7 @@
         <h2>Où déposer son dossier</h2>
       </div>
 
-      <div class="depots">
+      <div class="depots"><!--zl:depots-->
         <div class="depot">
           <p class="quand">Tous les samedis</p>
           <h3>Au club-house</h3>
@@ -369,7 +446,7 @@
           <h3>Par e-mail</h3>
           <p><a href="mailto:tennisclubissois@live.fr">tennisclubissois@live.fr</a></p>
         </div>
-      </div>
+      <!--/zl--></div>
     </div>
   </section>
 
@@ -408,9 +485,9 @@
       <span class="a-v1"></span><span class="a-v2"></span><span class="a-filet"></span>
     </div>
     <div class="contenu">
-      <h2>Une question avant de vous décider&nbsp;?</h2>
-      <p>Un essai est possible pour se faire une idée. Appelez-nous ou passez
-         au club-house un samedi matin, on trouvera un créneau.</p>
+      <h2><!--z:appel.titre-->Une question avant de vous décider&nbsp;?<!--/z--></h2>
+      <p><!--z:appel.texte-->Un essai est possible pour se faire une idée. Appelez-nous ou passez
+         au club-house un samedi matin, on trouvera un créneau.<!--/z--></p>
       <div class="appel-actions">
         <a class="btn btn-plein" href="tel:+33615761192">06 15 76 11 92</a>
         <a class="btn btn-ligne" href="/contact.html">Nous écrire</a>
@@ -467,6 +544,7 @@
 </footer>
 
 <script src="js/tarifs.js"></script>
+<script src="js/demande.js"></script>
 <script src="js/menu.js"></script>
 <script>
   (function () {
