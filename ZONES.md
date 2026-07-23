@@ -78,6 +78,27 @@ base. Le nombre d'éléments peut varier.
 | `mot.nom` · `mot.fonction` | simple | Signature |
 | `appel.titre` · `appel.texte` | simple | Appel final |
 
+### `galerie.html` (Galerie)
+
+| Clé | Type | Contenu |
+|-----|------|---------|
+| `hero.titre` · `hero.texte` | simple | Bandeau |
+| `galerie.avertissement` | simple | Bandeau « en construction » — **à vider** au lancement |
+| `albums.intro` | simple | Introduction des albums |
+| `albums` | liste | Albums (titre, description, fichier de couverture) |
+| `contribuer.titre` · `contribuer.texte` | simple | « Vous avez des photos ? » |
+| `droitimage.titre` · `droitimage.texte` | simple | Encadré droit à l'image |
+| `appel.titre` · `appel.texte` | simple | Appel final |
+
+> **Photo de couverture d'un album** : c'est un fichier de `img/galerie/` du
+> dépôt, référencé par son nom (comme les logos partenaires). Sans photo,
+> l'album garde son vignette d'attente et la pastille « photos à fournir ».
+> L'**envoi** de photos depuis MyTCI n'est pas encore en place pour la galerie.
+>
+> ⚠️ **Droit à l'image** : ne publier une photo montrant une personne
+> reconnaissable qu'avec son accord — et celui des représentants légaux pour un
+> mineur. L'avertissement est rappelé dans l'écran d'édition.
+
 ### `inscription.html` (Inscription)
 
 | Clé | Type | Contenu |
