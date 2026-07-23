@@ -31,6 +31,48 @@ Dockerfile            Dit à Coolify comment construire l'image
 _source/ ressources/ tests/    NON publiés (retirés de l'image Docker)
 ```
 
+## La vidéo d'ambiance de la page d'accueil
+
+Le bandeau d'accueil peut afficher une vidéo en fond, muette et en boucle.
+Elle est **hébergée par le club** (aucun YouTube, aucun cookie, aucun tiers —
+cohérent avec la politique de confidentialité).
+
+Pour l'activer, déposer deux fichiers dans `img/` :
+
+| Fichier | Rôle |
+|---|---|
+| `img/accueil-fond.mp4` | la vidéo (obligatoire) |
+| `img/accueil-fond.jpg` | première image, affichée avant lecture (recommandé) |
+
+Le balisage est déjà en place dans `index.html`. Tant que le `.mp4` est
+absent, le bandeau garde son fond rouge : il n'y a donc rien à défaire si l'on
+renonce à la vidéo.
+
+**Contraintes, à respecter absolument :**
+
+- **Format** MP4 (codec H.264), le plus compatible.
+- **Sans piste audio** : la vidéo est muette de toute façon, et retirer le son
+  allège le fichier et évite les blocages de lecture automatique.
+- **Courte** : 10 à 20 secondes, elle tourne en boucle.
+- **Légère** : viser **2 à 5 Mo**, 8 Mo au grand maximum. Une vidéo de
+  téléphone brute pèse souvent 100 Mo et plus — **elle doit être compressée
+  avant**, sinon la page devient lente et l'image Docker énorme.
+- **720p suffit** (1280×720) pour un fond ; le 1080p est inutilement lourd.
+
+Compression avec l'outil gratuit **HandBrake** : préréglage « Web » / « Vimeo
+YouTube 720p30 », puis dans l'onglet *Audio*, retirer la piste. Ou, en ligne
+de commande avec ffmpeg :
+
+```
+ffmpeg -i source.mov -an -vf scale=1280:-2 -c:v libx264 -crf 28 -preset slow img/accueil-fond.mp4
+```
+
+(`-an` retire le son, `-crf 28` règle la compression : plus le nombre est
+grand, plus le fichier est léger.)
+
+Le mouvement est désactivé pour les visiteurs qui ont demandé à leur système
+de **réduire les animations** : ils voient le fond rouge fixe, sans vidéo.
+
 ## Le logo
 
 `_source/LogoTCI-HQ.png` est l'original. Les fichiers de `img/` en sont

@@ -71,6 +71,16 @@
 
   <!-- ── Bandeau d'accueil ──────────────────────────────────── -->
   <section class="hero">
+
+    <!-- Emplacement de la vidéo d'ambiance (muette, en boucle, hébergée par le
+         club — aucun tiers, aucun cookie). La vidéo n'est PAS référencée ici :
+         c'est js/accueil-video.js qui l'attache, et seulement si le fichier
+         img/accueil-fond.mp4 existe. Tant qu'il est absent, aucune requête,
+         aucune erreur, et le bandeau garde son fond rouge.
+         Pour activer : déposer img/accueil-fond.mp4 (voir LISEZMOI). -->
+    <video class="hero-video" aria-hidden="true" muted loop playsinline preload="none"></video>
+    <div class="hero-voile" aria-hidden="true" hidden></div>
+
     <div class="hero-lignes" aria-hidden="true">
       <span class="l-h1"></span><span class="l-h2"></span>
       <span class="l-h3"></span><span class="l-h4"></span>
@@ -301,6 +311,7 @@
 </footer>
 
 <script src="js/menu.js"></script>
+<script src="js/accueil-video.js"></script>
 
 </body>
 </html>

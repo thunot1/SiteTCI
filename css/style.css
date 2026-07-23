@@ -168,6 +168,30 @@ a { color: var(--rouge-texte); }
   background: linear-gradient(160deg, var(--rouge) 0%, var(--rouge-fond) 55%, #A81A1A 100%);
 }
 
+/* Vidéo d'ambiance en fond du bandeau. Elle se pose SUR le dégradé rouge, qui
+   reste le filet de sécurité : fichier absent, format non lu, connexion lente
+   → le bandeau garde son fond rouge, jamais de trou noir. */
+.hero-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0; pointer-events: none;
+}
+/* Voile rouge par-dessus la vidéo : il garantit le contraste du texte blanc
+   quelle que soit la luminosité des images (une vidéo claire rendrait le titre
+   illisible). Teinté du rouge du club, il conserve l'identité du bandeau. */
+.hero-voile {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(160deg, rgba(224,47,47,.80) 0%, rgba(198,34,34,.86) 55%, rgba(168,26,26,.90) 100%);
+}
+/* Les lignes de court et le contenu repassent au-dessus du voile. */
+.hero-lignes { z-index: 2; }
+.hero-inner  { position: relative; z-index: 3; }
+
+/* Mouvement réduit : on ne joue pas de vidéo animée. Le bandeau retrouve son
+   fond rouge et ses lignes de court, sans rien qui bouge. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video, .hero-voile { display: none; }
+}
+
 /* Motif de lignes de court : la géométrie d'un terrain, tracée en CSS.
    Elle donne une identité au bandeau sans dépendre d'une photographie —
    utile tant que le club n'a pas fourni ses images. */
