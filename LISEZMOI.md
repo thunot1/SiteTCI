@@ -194,8 +194,11 @@ que ce sont des questions courantes d'un futur adhérent :
 - **texte du règlement intérieur** du court couvert (il n'existe qu'en image)
 - **texte de la charte des championnats** (idem)
 - **adresse exacte de la page Facebook** du club
-- **logos manquants** : Rondot Immobilier, BW Associés, RJ Recrutement,
-  TennisPro, Crédit Mutuel, Cordier, Département de la Côte-d'Or
+- **logos manquants** : TennisPro, Crédit Mutuel, Cordier, Département de la
+  Côte-d'Or. (Rondot, BW Associés et RJ Recrutement sont en place ; les
+  fichiers d'origine sont dans `ressources/logos-sources/`, non publié. Le
+  fichier fourni pour Cordier était une photo de banderole, inexploitable
+  comme logo — un vrai logo reste à obtenir.)
 
 Rien de tout cela n'a été inventé : les pastilles marquent les trous plutôt
 que de les combler avec du plausible.
