@@ -930,6 +930,7 @@ a.vitrine-carte:hover {
   border-radius: var(--r-lg); padding: 26px 24px;
 }
 .plan svg { width: 100%; height: auto; display: block; }
+.plan img { width: 100%; height: auto; display: block; border-radius: var(--r-md); }
 .plan-legende {
   display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 18px;
   padding-top: 16px; border-top: 1px solid var(--lisere);

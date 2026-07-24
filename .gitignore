@@ -5,11 +5,10 @@
 # Ces fichiers restent sur le poste, où ils sont sauvegardés par ailleurs.
 ressources/
 
-# Recadrages de cette même capture satellite. Aucune page n'y renvoie : c'est
-# le schéma SVG de `le-club.html` qui est utilisé. Ils restent sur le poste au
-# cas où le club voudrait publier la photo — ce qui supposerait de régler la
-# question de l'attribution.
-img/plan-acces.jpg
+# `plan-acces.jpg` (vue aérienne annotée) est publié à la demande du club sur
+# la page « Le club ». C'est une capture d'imagerie cartographique : la
+# question de l'attribution relève du club, qui a choisi de la mettre en ligne.
+# La version @2x reste hors dépôt (non utilisée par la page).
 img/plan-acces@2x.jpg
 
 # Détritus de l'explorateur Windows et de macOS
