@@ -184,22 +184,26 @@ relaie par e-mail au bureau. **Rien n'est stocké sur ce site.** Conséquences :
 | Clé | Type | Contenu |
 |-----|------|---------|
 | `hero.titre` · `hero.texte` | simple | Bandeau |
-| `planning.saison` | simple | Saison affichée au-dessus du planning |
-| `planning.intro` | simple | Planning — phrase d'introduction |
-| `planning.avertissement` | simple | Bandeau orange — **à vider** quand le vrai planning est saisi |
-| `planning` | liste | Créneaux (jour, heure, durée, groupe, précision, moniteur) |
+| `planning.saison` | simple | Saison affichée dans le premier bloc |
+| `planning.intro` | simple | Groupes et planning — introduction (lien mailto possible) |
+| `fonctionnement.texte1` · `.texte2` | simple | Descriptif — paragraphes pédagogiques (dans le premier bloc) |
+| `planning.lien` | simple | Bouton vers le fichier de planning (à déposer dans `documents/`) |
 | `equipe.intro` | simple | Moniteurs — introduction |
 | `moniteurs` | liste | Moniteurs (photo facultative + nom + rôle) — initiales si pas de photo |
-| `fonctionnement.texte1` · `.texte2` | simple | Comment l'école fonctionne |
+| `courtcouvert.texte` | simple | Encadré « Qui dispose du court couvert ? » (HTML, lien possible) |
+| `informe.texte` | simple | Encadré « Rester informé » |
 | `appel.titre` · `appel.texte` | simple | Appel final |
 
-> **Le planning se saisit à plat**, un créneau par ligne avec son jour : c'est
-> la forme dans laquelle `_source/extraire-planning.sql` sort les cours de
-> MyTCI. Le regroupement par journée et l'ordre de la semaine sont
-> reconstitués à la publication.
+> **Le planning n'est plus saisi à plat sur le site.** Le club joint désormais
+> un fichier (PDF, dossier `documents/`) et `planning.lien` pointe dessus. Le
+> générateur `planning` reste en place côté serveur mais n'est plus utilisé par
+> la page ; l'ancien bandeau d'avertissement et le planning d'exemple ont été
+> retirés.
 >
-> **La colonne « Court » a été retirée** (HTML, CSS et générateur) : la
-> rotation les jours de pluie la rendait fausse une semaine sur deux.
+> **Le contenu du court couvert est éditable** (`courtcouvert.texte`) et accepte
+> un lien. Le bloc « Comment l'école fonctionne » a été fusionné dans le premier
+> bloc, et le pavé « Suivre son assiduité » est devenu la section « Rester
+> informé » (sans bouton).
 
 ### `contact.html` (Contact)
 

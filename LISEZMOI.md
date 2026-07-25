@@ -159,19 +159,19 @@ DNS prend de quelques minutes à quelques heures.
   stable depuis quelques jours — voir le commentaire dans `nginx.conf`.
   Pas avant : l'en-tête est irréversible côté navigateur.
 
-## ⚠️ Avant toute mise en ligne
+## Le planning de l'école
 
-`ecole-de-tennis.html` contient un **planning d'exemple**, signalé par un
-bandeau orange dans la page. Ce ne sont pas les vrais horaires du club.
-**Ne pas publier le site tant que ce bloc n'a pas été remplacé.**
+`ecole-de-tennis.html` ne détaille plus les créneaux dans la page : le premier
+bloc « Groupes et planning » se termine par un **bouton vers un fichier de
+planning** (zone `planning.lien`). Déposer ce fichier dans un dossier
+`documents/` du dépôt (par ex. `documents/planning-ecole-de-tennis.pdf`) et,
+si besoin, ajuster le lien depuis MyTCI (École de tennis → « Bouton vers le
+planning des cours »). Tant que le fichier n'est pas là, le bouton mène à une
+adresse encore vide.
 
-Pour obtenir les vraies données : lancer `_source/extraire-planning.sql`
-sur la base MyTCI, qui détient déjà les cours, les jours, les horaires et
-les moniteurs. Le résultat sert à générer le tableau HTML.
-
-À refaire quand le planning change. Il n'y a **aucun lien automatique**
-entre MyTCI et le site : c'est délibéré, cela évite d'exposer une API
-publique et de coupler davantage les deux applications.
+Il n'y a **aucun lien automatique** entre MyTCI et le site : c'est délibéré,
+cela évite d'exposer une API publique et de coupler davantage les deux
+applications.
 
 ## Informations qu'il manque au club
 
@@ -237,7 +237,8 @@ Console et y soumettre le sitemap.
 
 ## Reste à faire
 
-- **Remplacer le planning d'exemple** par les données réelles (voir plus haut)
+- **Déposer le fichier de planning de l'école** dans `documents/` et vérifier le
+  bouton « Consulter le planning des cours » (voir « Le planning de l'école »)
 - **Vérifier la date de mise en ligne** des pages légales : elles annoncent le
   1ᵉʳ septembre 2026, date fournie par le club. Si le site est publié avant,
   corriger la date dans `mentions-legales.html` (§ « Date de mise en ligne »)

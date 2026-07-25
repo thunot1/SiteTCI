@@ -341,6 +341,9 @@ a { color: var(--rouge-texte); }
 
 .section { padding: 72px 0; }
 .section-doux { background: var(--creme); }
+/* Bloc de texte courant (paragraphes descriptifs), largeur de lecture confortable. */
+.bloc-texte { max-width: var(--etroit); font-size: 16.5px; line-height: 1.7; }
+.bloc-texte p { color: var(--encre); }
 .section-tete { margin-bottom: 34px; }
 .surtitre {
   font-size: 12px; font-weight: 800; letter-spacing: .15em;
