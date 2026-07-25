@@ -31,47 +31,38 @@ Dockerfile            Dit à Coolify comment construire l'image
 _source/ ressources/ tests/    NON publiés (retirés de l'image Docker)
 ```
 
-## La vidéo d'ambiance de la page d'accueil
+## Le bandeau d'accueil (Hero)
 
-Le bandeau d'accueil peut afficher une vidéo en fond, muette et en boucle.
-Elle est **hébergée par le club** (aucun YouTube, aucun cookie, aucun tiers —
-cohérent avec la politique de confidentialité).
+La page d'accueil s'ouvre sur un bandeau en deux parties : un **panneau rouge**
+à gauche (logo, accroche, titre, texte, boutons) et une **photo pleine hauteur**
+à droite, séparés par une diagonale douce. La photo porte un voile rouge très
+léger pour s'harmoniser avec l'identité du club.
 
-Pour l'activer, déposer deux fichiers dans `img/` :
+La photo est le fichier **`img/accueil-hero.jpg`** :
 
-| Fichier | Rôle |
-|---|---|
-| `img/accueil-fond.mp4` | la vidéo (obligatoire) |
-| `img/accueil-fond.jpg` | première image, affichée avant lecture (recommandé) |
+- **Paysage**, large : **1600 px de côté ou plus**, cadrée pour garder les
+  personnes/joueurs plutôt au centre-droit (la gauche passe sous le panneau).
+- **JPEG optimisé** : viser **≤ 400 Ko** (l'image d'accueil est la première
+  chargée). Une photo brute de 1–2 Mo se recompresse en qualité 85 sans perte
+  visible — par exemple avec Pillow :
+  `Image.open('src.jpg').convert('RGB').save('img/accueil-hero.jpg','JPEG',quality=85,optimize=True,progressive=True)`.
 
-Le balisage est déjà en place dans `index.html`. Tant que le `.mp4` est
-absent, le bandeau garde son fond rouge : il n'y a donc rien à défaire si l'on
-renonce à la vidéo.
+Si le fichier est absent, `js/accueil-hero.js` retire l'image et le dégradé
+rouge occupe la place : jamais d'image cassée, le rouge reste le filet de
+sécurité.
 
-**Contraintes, à respecter absolument :**
+**Réglages fins** (dans `css/style.css`, bloc « Bandeau d'accueil, version
+deux parties ») :
 
-- **Format** MP4 (codec H.264), le plus compatible.
-- **Sans piste audio** : la vidéo est muette de toute façon, et retirer le son
-  allège le fichier et évite les blocages de lecture automatique.
-- **Courte** : 10 à 20 secondes, elle tourne en boucle.
-- **Légère** : viser **2 à 5 Mo**, 8 Mo au grand maximum. Une vidéo de
-  téléphone brute pèse souvent 100 Mo et plus — **elle doit être compressée
-  avant**, sinon la page devient lente et l'image Docker énorme.
-- **720p suffit** (1280×720) pour un fond ; le 1080p est inutilement lourd.
+- La **pente de la diagonale** : le `5vw` de `clip-path` sur `.hero-a-panneau`.
+- Le **cadrage** de la photo : `object-position` sur `.hero-a-img` (par défaut
+  `60% 55%`, biais droite/bas).
+- L'**intensité du voile** rouge : les opacités de `.hero-a-voile`.
 
-Compression avec l'outil gratuit **HandBrake** : préréglage « Web » / « Vimeo
-YouTube 720p30 », puis dans l'onglet *Audio*, retirer la piste. Ou, en ligne
-de commande avec ffmpeg :
-
-```
-ffmpeg -i source.mov -an -vf scale=1280:-2 -c:v libx264 -crf 28 -preset slow img/accueil-fond.mp4
-```
-
-(`-an` retire le son, `-crf 28` règle la compression : plus le nombre est
-grand, plus le fichier est léger.)
-
-Le mouvement est désactivé pour les visiteurs qui ont demandé à leur système
-de **réduire les animations** : ils voient le fond rouge fixe, sans vidéo.
+Les animations d'entrée (fondu du panneau et montée du texte 350 ms, fondu +
+glissé + léger zoom de la photo 450 ms, boutons en dernier) sont **désactivées**
+pour les visiteurs qui ont demandé à réduire les animations : tout reste alors
+visible, sans mouvement.
 
 ## Le logo
 
