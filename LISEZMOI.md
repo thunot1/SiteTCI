@@ -221,15 +221,15 @@ prête (`img/plan-acces.jpg`, 154 Ko).
 
 ## Au lancement — ce qu'il faudra retirer
 
-Le site est en ligne sur `https://tennisclubissois.fr` mais se présente comme
-**en construction**, et renvoie au site Holdsport. Tant que c'est le cas, il
-est volontairement tenu à l'écart des moteurs de recherche.
+Le site est en ligne sur `https://tennisclubissois.fr`. Le bandeau « en
+construction » et son lien vers Holdsport ont été retirés de la page d'accueil ;
+il reste que le site est volontairement tenu à l'écart des moteurs de recherche.
 
-Tout ce qui est provisoire porte la mention `CHANTIER` — un
-`grep -r CHANTIER` les retrouve tous. À faire le jour du lancement :
+Ce qui reste provisoire porte la mention `CHANTIER` — un `grep -r CHANTIER` les
+retrouve tous. À faire le jour du lancement :
 
-1. **Le bandeau de chantier** : le bloc `<aside class="chantier">` au début de
-   `index.html`, et la section `.chantier` à la fin de `css/style.css`.
+1. ~~**Le bandeau de chantier** (`<aside class="chantier">` dans `index.html` et
+   la section `.chantier` du CSS).~~ **Fait.**
 2. **Les balises `noindex`** : la ligne
    `<meta name="robots" content="noindex, follow">` des 11 pages. Les trois
    pages légales retrouveront leur `content="index, follow"` d'origine.
