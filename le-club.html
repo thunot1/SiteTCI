@@ -48,21 +48,27 @@
 
 <main id="contenu">
 
-  <section class="hero hero-page">
-    <div class="hero-lignes" aria-hidden="true">
-      <span class="l-h1"></span><span class="l-h2"></span>
-      <span class="l-h3"></span><span class="l-h4"></span>
-      <span class="l-v1"></span><span class="l-v2"></span><span class="l-v3"></span>
-      <span class="l-filet"></span>
+  <!-- ── Bandeau « Le club » ─────────────────────────────────────
+       Même famille graphique que l'accueil (panneau rouge, diagonale,
+       voile, animations, bouton blanc) mais plus court et institutionnel.
+       Le rouge reste le filet de sécurité : si img/club-hero.jpg est absent,
+       js/club-hero.js retire l'image et le dégradé rouge occupe la place. -->
+  <section class="hero-club">
+    <div class="hero-club-panneau">
+      <div class="hero-club-contenu">
+        <h1>Le club</h1>
+        <p class="hero-club-texte"><!--z:hero.texte-->Depuis plus de 50 ans, le Tennis Club Issois rassemble toutes les générations
+          autour d'une même passion&nbsp;: le tennis. Découvrez notre histoire, nos installations
+          et les bénévoles qui font vivre le club au quotidien.<!--/z--></p>
+        <div class="hero-club-actions">
+          <a class="btn btn-blanc" href="#installations">Découvrir le club</a>
+        </div>
+      </div>
     </div>
-    <div class="hero-inner">
-      <p class="fil"><a href="/">Accueil</a> · Le club</p>
-      <h1><!--z:hero.titre-->Un club rural qui joue dans la cour des grands<!--/z--></h1>
-      <p class="hero-texte"><!--z:hero.texte-->
-        Dixième club de Côte-d'Or par le nombre de licenciés et premier club rural
-        du département. Cinq courts, une école de tennis, et un bureau entièrement
-        composé de bénévoles.
-      <!--/z--></p>
+    <div class="hero-club-photo">
+      <img class="hero-club-img" src="img/club-hero.jpg" width="1400" height="360"
+           alt="Les installations du Tennis Club Issois : les courts, le club-house et les joueurs.">
+      <span class="hero-club-voile" aria-hidden="true"></span>
     </div>
   </section>
 
@@ -378,6 +384,7 @@
 </footer>
 
 <script src="js/menu.js"></script>
+<script src="js/club-hero.js"></script>
 <script src="js/equipe-anim.js" defer></script>
 
 </body>

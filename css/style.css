@@ -337,6 +337,81 @@ a { color: var(--rouge-texte); }
   .hero-accueil .hero-logo { max-width: 200px; }
 }
 
+/* ── Bandeau institutionnel « Le club » ───────────────────────────
+   Même famille que l'accueil (panneau rouge, diagonale, voile, animations,
+   bouton blanc) mais court : le contenu de la page apparaît vite. */
+.hero-club {
+  position: relative; overflow: hidden; isolation: isolate; color: #fff;
+  min-height: clamp(292px, 33vh, 340px);
+}
+.hero-club-photo {
+  position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(160deg, var(--rouge) 0%, var(--rouge-fond) 55%, #A81A1A 100%);
+}
+.hero-club-img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
+}
+/* Voile rouge très léger (≈10-15 %) : harmonise sans assombrir, la photo reste
+   naturelle et lumineuse. */
+.hero-club-voile {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(210deg, rgba(224,47,47,.10) 0%, rgba(168,26,26,.15) 100%);
+}
+.hero-club-panneau {
+  position: absolute; top: 0; bottom: 0; left: 0; z-index: 2;
+  width: clamp(360px, 40%, 500px); max-width: 92%;
+  display: flex; align-items: center;
+  background: linear-gradient(160deg, var(--rouge) 0%, var(--rouge-fond) 55%, #A81A1A 100%);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 4vw) 100%, 0 100%);
+  filter: drop-shadow(10px 0 24px rgba(120, 8, 8, .30));
+}
+/* Balle de tennis en filigrane (≈4 %), presque invisible, coupée par la diagonale. */
+.hero-club-panneau::before {
+  content: ""; position: absolute; z-index: 0; pointer-events: none;
+  right: -7%; top: 50%; width: 50%; aspect-ratio: 1; transform: translateY(-50%);
+  border-radius: 50%; border: 3px solid #fff; opacity: .04;
+}
+.hero-club-contenu {
+  position: relative; z-index: 1; width: 100%; max-width: 440px;
+  padding: 24px clamp(22px, 3vw, 38px) 24px clamp(26px, 4vw, 60px);
+}
+.hero-club h1 {
+  font-family: var(--serif); font-weight: 600;
+  font-size: clamp(32px, 3.6vw, 48px); line-height: 1; letter-spacing: .012em;
+  text-transform: uppercase; margin: 0 0 12px;
+}
+.hero-club-texte { font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.94); max-width: 42ch; }
+.hero-club-actions { margin-top: 18px; }
+
+/* Bouton blanc — même finition que l'accueil. */
+.hero-club .btn-blanc {
+  box-shadow: 0 6px 18px rgba(80, 6, 6, .18);
+  transition: background .2s ease, box-shadow .2s ease;
+}
+.hero-club .btn-blanc:hover { background: #F1ECE8; box-shadow: 0 8px 22px rgba(80, 6, 6, .22); }
+
+/* Animations d'entrée, identiques à l'accueil (mêmes keyframes). */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-club-panneau { animation: heroPanneau .35s cubic-bezier(.22,1,.36,1) both; }
+  .hero-club-photo   { animation: heroPhoto .45s cubic-bezier(.22,1,.36,1) both; animation-delay: .08s; }
+  .hero-club-contenu > * { animation: heroMonte .35s cubic-bezier(.22,1,.36,1) both; }
+  .hero-club-contenu > h1               { animation-delay: .10s; }
+  .hero-club-contenu > .hero-club-texte { animation-delay: .18s; }
+  .hero-club-contenu > .hero-club-actions { animation-delay: .30s; }
+}
+
+/* Sous 820 px : le panneau passe au-dessus, la photo dessous, bouton centré. */
+@media (max-width: 820px) {
+  .hero-club { min-height: 0; display: flex; flex-direction: column; }
+  .hero-club-panneau {
+    position: static; width: 100%; max-width: none; clip-path: none; filter: none;
+  }
+  .hero-club-panneau::before { display: none; }
+  .hero-club-contenu { max-width: 640px; margin: 0 auto; padding: 30px 24px 32px; text-align: center; }
+  .hero-club-texte { margin-left: auto; margin-right: auto; }
+  .hero-club-photo { position: static; height: clamp(200px, 46vw, 300px); }
+}
+
 /* ── Sections ────────────────────────────────────────────────── */
 
 .section { padding: 72px 0; }
