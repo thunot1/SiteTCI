@@ -21,7 +21,7 @@
     return;
   }
 
-  var grilles = document.querySelectorAll('.bureau, .conseil-membres');
+  var grilles = document.querySelectorAll('.bureau, .conseil-membres, .equipe');
   if (!grilles.length) {
     return;
   }
@@ -42,7 +42,7 @@
     : null;
 
   for (var g = 0; g < grilles.length; g++) {
-    var cartes = grilles[g].querySelectorAll('.membre');
+    var cartes = grilles[g].querySelectorAll('.membre, .moniteur');
     for (var i = 0; i < cartes.length; i++) {
       // Cascade propre à chaque grille (transition-delay: --i × 70 ms).
       cartes[i].style.setProperty('--i', i);

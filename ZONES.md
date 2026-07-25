@@ -189,7 +189,7 @@ relaie par e-mail au bureau. **Rien n'est stocké sur ce site.** Conséquences :
 | `planning.avertissement` | simple | Bandeau orange — **à vider** quand le vrai planning est saisi |
 | `planning` | liste | Créneaux (jour, heure, durée, groupe, précision, moniteur) |
 | `equipe.intro` | simple | Moniteurs — introduction |
-| `moniteurs` | liste | Moniteurs (nom, rôle) — initiales calculées |
+| `moniteurs` | liste | Moniteurs (photo facultative + nom + rôle) — initiales si pas de photo |
 | `fonctionnement.texte1` · `.texte2` | simple | Comment l'école fonctionne |
 | `appel.titre` · `appel.texte` | simple | Appel final |
 
@@ -243,13 +243,15 @@ réécrit le fichier. Coolify reconstruit ensuite le site. Conséquences :
 - **Les photos d'actualités** sont poussées par MyTCI dans `img/actus/`, une
   image par actualité, nommée d'après son identifiant. Ne pas les modifier à la
   main : elles sont réécrites à chaque publication.
-- **Les portraits des membres** (bureau, conseil) suivent le même principe dans
-  `img/equipe/`, une image carrée par membre nommée d'après son identifiant.
-  Envoyées depuis l'écran « Le club » de MyTCI, copiées ici à la publication.
-  Sans photo, la page affiche les initiales du membre. Les portraits du bureau
-  apparaissent en cascade (fondu + montée + zoom léger), pilotés par
-  `js/equipe-anim.js` ; l'animation est désactivée si le visiteur a demandé de
-  réduire les animations, et les cartes restent visibles si le script ne tourne pas.
+- **Les portraits** (bureau et conseil sur « Le club », moniteurs sur « École de
+  tennis ») suivent le même principe dans `img/equipe/`, une image carrée par
+  personne nommée d'après son identifiant. Envoyées depuis MyTCI, copiées ici à
+  la publication. Sans photo, la page affiche les initiales. Ces portraits
+  occupent l'essentiel de leur carte et apparaissent **en cascade** (fondu +
+  montée de 8 px + zoom léger, 350 ms), pilotés par `js/equipe-anim.js` sur les
+  grilles `.bureau`, `.conseil-membres` et `.equipe` ; l'animation est désactivée
+  si le visiteur a demandé de réduire les animations, et les cartes restent
+  visibles si le script ne tourne pas.
 - Modifier une page directement dans le dépôt reste possible ; MyTCI relit le
   fichier à chaque publication, il ne travaille jamais sur une copie périmée.
 

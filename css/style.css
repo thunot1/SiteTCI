@@ -634,13 +634,17 @@ a { color: var(--rouge-texte); }
 .equipe { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
 .moniteur {
   background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-md);
-  padding: 22px 20px; text-align: center;
+  padding: 18px 16px 20px; text-align: center;
 }
-.moniteur .initiales {
-  width: 62px; height: 62px; margin: 0 auto 14px; border-radius: 50%;
-  background: var(--rouge-lave); color: var(--rouge-texte);
-  display: grid; place-items: center;
-  font-family: var(--serif); font-size: 23px; font-weight: 600;
+/* Portrait généreux, identique à celui des membres du bureau. */
+.moniteur .portrait {
+  width: clamp(130px, 78%, 186px); aspect-ratio: 1; border-radius: 50%; margin: 0 auto 14px;
+  overflow: hidden; display: flex; align-items: center; justify-content: center;
+  background: var(--rouge-lave); flex: 0 0 auto;
+}
+.moniteur .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.moniteur .portrait.vide {
+  font-weight: 800; font-size: clamp(38px, 9vw, 52px); letter-spacing: .02em; color: var(--rouge-texte);
 }
 .moniteur .nom { font-weight: 700; font-size: 16.5px; }
 .moniteur .role { color: var(--gris); font-size: 14px; margin-top: 3px; }
@@ -862,17 +866,20 @@ a { color: var(--rouge-texte); }
    Fondu + montée de 8 px + zoom 97 %→100 %, 350 ms, courbe (0.22,1,0.36,1),
    décalées de 70 ms d'un portrait à l'autre. */
 .anim-portraits .bureau .membre,
-.anim-portraits .conseil-membres .membre {
+.anim-portraits .conseil-membres .membre,
+.anim-portraits .equipe .moniteur {
   opacity: 0; transform: translateY(8px) scale(.97);
   transition: opacity .35s cubic-bezier(.22, 1, .36, 1),
               transform .35s cubic-bezier(.22, 1, .36, 1);
   transition-delay: calc(var(--i, 0) * 70ms);
 }
 .anim-portraits .bureau .membre.apparu,
-.anim-portraits .conseil-membres .membre.apparu { opacity: 1; transform: none; }
+.anim-portraits .conseil-membres .membre.apparu,
+.anim-portraits .equipe .moniteur.apparu { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .anim-portraits .bureau .membre,
-  .anim-portraits .conseil-membres .membre { opacity: 1; transform: none; transition: none; }
+  .anim-portraits .conseil-membres .membre,
+  .anim-portraits .equipe .moniteur { opacity: 1; transform: none; transition: none; }
 }
 
 .commissions { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
