@@ -244,7 +244,7 @@ a { color: var(--rouge-texte); }
    et le filet de sécurité (photo absente → dégradé rouge dessous). */
 .hero-accueil {
   position: relative; overflow: hidden; isolation: isolate; color: #fff;
-  min-height: clamp(520px, 72vh, 720px);
+  min-height: clamp(480px, 64vh, 660px);
 }
 
 /* Photo : couche de fond, pleine surface. Le dégradé rouge sous l'image
@@ -268,7 +268,7 @@ a { color: var(--rouge-texte); }
 /* Panneau rouge, découpé en diagonale douce sur son bord droit. */
 .hero-a-panneau {
   position: absolute; top: 0; bottom: 0; left: 0; z-index: 2;
-  width: clamp(430px, 46%, 680px); max-width: 92%;
+  width: clamp(460px, 48%, 720px); max-width: 92%;
   display: flex; align-items: center;
   background: linear-gradient(160deg, var(--rouge) 0%, var(--rouge-fond) 55%, #A81A1A 100%);
   clip-path: polygon(0 0, 100% 0, calc(100% - 5vw) 100%, 0 100%);
@@ -283,16 +283,21 @@ a { color: var(--rouge-texte); }
   border-radius: 50%; border: 3px solid #fff; opacity: .06;
 }
 .hero-a-contenu {
-  position: relative; z-index: 1; width: 100%; max-width: 550px;
-  padding: 40px clamp(26px, 4vw, 52px) 40px clamp(28px, 5vw, 92px);
+  position: relative; z-index: 1; width: 100%; max-width: 560px;
+  padding: 34px clamp(24px, 3vw, 44px) 38px clamp(30px, 4.5vw, 76px);
 }
-.hero-accueil .hero-logo { width: 232px; max-width: 58%; height: auto; margin-bottom: 22px; }
+.hero-accueil .hero-logo { width: 196px; max-width: 52%; height: auto; margin-bottom: 16px; }
+/* Le badge tient sur une seule ligne ; les exposants (10ᵉ, 1ᵉʳ) sont ramenés à
+   leur taille sans gonfler la hauteur de la pastille. */
+.hero-accueil .claim { white-space: nowrap; font-size: 12.75px; letter-spacing: .004em; }
+.hero-accueil .claim svg { flex: 0 0 auto; }
+.hero-accueil .claim sup { font-size: .68em; line-height: 0; }
 .hero-accueil h1 {
-  font-size: clamp(34px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -.01em;
-  margin: 20px 0 16px; max-width: 15ch;
+  font-size: clamp(33px, 4.1vw, 52px); line-height: 1.06; letter-spacing: -.015em;
+  margin: 16px 0 14px; max-width: 18ch;
 }
-.hero-accueil .hero-texte { font-size: 18px; line-height: 1.62; max-width: 550px; color: rgba(255,255,255,.94); }
-.hero-accueil .hero-actions { margin-top: 30px; }
+.hero-accueil .hero-texte { font-size: 17.5px; line-height: 1.6; max-width: 500px; color: rgba(255,255,255,.94); }
+.hero-accueil .hero-actions { margin-top: 26px; }
 
 /* Boutons — finition premium, dans l'esprit blanc/rouge du club. */
 .hero-accueil .btn-blanc {
