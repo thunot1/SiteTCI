@@ -70,8 +70,8 @@ base. Le nombre d'éléments peut varier.
 | `installations.intro` | simple | Installations — phrase d'introduction |
 | `clubhouse.permanence` | simple | Horaires de permanence du club-house |
 | `organisation.intro` | simple | Organisation — phrase d'introduction |
-| `bureau` | liste | Membres du bureau (fonction + nom) |
-| `conseil` | liste | Conseil d'administration (noms) |
+| `bureau` | liste | Membres du bureau (photo facultative + fonction + nom) |
+| `conseil` | liste | Conseil d'administration (photo facultative + nom) |
 | `commissions` | liste | Commissions (nom + responsable) |
 | `mot.saison` | simple | Mot du président — surtitre de saison |
 | `mot.lettre` | simple | Mot du président — corps de la lettre (HTML) |
@@ -243,6 +243,13 @@ réécrit le fichier. Coolify reconstruit ensuite le site. Conséquences :
 - **Les photos d'actualités** sont poussées par MyTCI dans `img/actus/`, une
   image par actualité, nommée d'après son identifiant. Ne pas les modifier à la
   main : elles sont réécrites à chaque publication.
+- **Les portraits des membres** (bureau, conseil) suivent le même principe dans
+  `img/equipe/`, une image carrée par membre nommée d'après son identifiant.
+  Envoyées depuis l'écran « Le club » de MyTCI, copiées ici à la publication.
+  Sans photo, la page affiche les initiales du membre. Les portraits du bureau
+  apparaissent en cascade (fondu + montée + zoom léger), pilotés par
+  `js/equipe-anim.js` ; l'animation est désactivée si le visiteur a demandé de
+  réduire les animations, et les cartes restent visibles si le script ne tourne pas.
 - Modifier une page directement dans le dépôt reste possible ; MyTCI relit le
   fichier à chaque publication, il ne travaille jamais sur une copie périmée.
 
