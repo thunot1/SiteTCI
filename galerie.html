@@ -48,20 +48,23 @@
 
 <main id="contenu">
 
-  <section class="hero hero-page">
-    <div class="hero-lignes" aria-hidden="true">
-      <span class="l-h1"></span><span class="l-h2"></span>
-      <span class="l-h3"></span><span class="l-h4"></span>
-      <span class="l-v1"></span><span class="l-v2"></span><span class="l-v3"></span>
-      <span class="l-filet"></span>
+  <!-- ── Bandeau Galerie — photo immersive + panneau rouge diagonal ─
+       Hero « vitrine » partagé (voir css .hero-vitrine). Repli rouge si
+       img/galerie-hero.jpg est absent (js/hero-vitrine.js). -->
+  <section class="hero-vitrine">
+    <div class="hero-vitrine-photo">
+      <img class="hero-vitrine-img" src="img/galerie-hero.jpg" width="1600" height="900"
+           alt="Ambiance d'une journée au Tennis Club Issois.">
+      <span class="hero-vitrine-voile" aria-hidden="true"></span>
     </div>
-    <div class="hero-inner">
-      <p class="fil"><a href="/">Accueil</a> · Galerie</p>
-      <h1><!--z:hero.titre-->Le club en images<!--/z--></h1>
-      <p class="hero-texte"><!--z:hero.texte-->
-        Les tournois, l'école de tennis, les animations de l'année&nbsp;: ce que
-        l'on ne voit pas dans un tableau de résultats.
-      <!--/z--></p>
+    <div class="hero-vitrine-panneau">
+      <div class="hero-vitrine-contenu">
+        <h1><!--z:hero.titre-->Le club en images<!--/z--></h1>
+        <p class="hero-vitrine-sous"><!--z:hero.texte-->
+          Les tournois, l'école de tennis, les animations de l'année&nbsp;: ce que
+          l'on ne voit pas dans un tableau de résultats.
+        <!--/z--></p>
+      </div>
     </div>
   </section>
 
@@ -286,6 +289,7 @@
 </footer>
 
 <script src="js/menu.js"></script>
+<script src="js/hero-vitrine.js"></script>
 
 </body>
 </html>
