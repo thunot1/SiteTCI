@@ -48,24 +48,29 @@
 
 <main id="contenu">
 
-  <section class="hero hero-page">
-    <div class="hero-lignes" aria-hidden="true">
-      <span class="l-h1"></span><span class="l-h2"></span>
-      <span class="l-h3"></span><span class="l-h4"></span>
-      <span class="l-v1"></span><span class="l-v2"></span><span class="l-v3"></span>
-      <span class="l-filet"></span>
+  <!-- ── Bandeau Compétitions — photo immersive + panneau rouge diagonal ─
+       Même signature que l'accueil, Le club et l'École (panneau rouge,
+       diagonale, voile léger, boutons blancs). Le dégradé rouge sous la photo
+       et le panneau sont le filet de sécurité : si img/competitions-hero.jpg
+       est absent, js/competitions-hero.js retire l'image, sans image cassée. -->
+  <section class="hero-comp">
+    <div class="hero-comp-photo">
+      <img class="hero-comp-img" src="img/competitions-hero.jpg" width="1600" height="900"
+           alt="Rencontre par équipes sur les courts du Tennis Club Issois.">
+      <span class="hero-comp-voile" aria-hidden="true"></span>
     </div>
-    <div class="hero-inner">
-      <p class="fil"><a href="/">Accueil</a> · Compétitions</p>
-      <h1><!--z:hero.titre-->Jouer en compétition<!--/z--></h1>
-      <p class="hero-texte"><!--z:hero.texte-->
-        162 joueurs du club ont disputé un championnat par équipes en 2025-2026.
-        Du premier match d'équipe au tournoi d'été, la compétition au TCI est
-        ouverte à tous les licenciés, quel que soit le classement.
-      <!--/z--></p>
-      <div class="hero-actions">
-        <a class="btn btn-blanc" href="#sinscrire">Rejoindre une équipe</a>
-        <a class="btn btn-blanc-ligne" href="#palmares">Les résultats</a>
+    <div class="hero-comp-panneau">
+      <div class="hero-comp-contenu">
+        <h1><!--z:hero.titre-->Jouer en compétition<!--/z--></h1>
+        <p class="hero-comp-sous"><!--z:hero.texte-->
+          162 joueurs du club ont disputé un championnat par équipes en 2025-2026.
+          Du premier match d'équipe au tournoi d'été, la compétition au TCI est
+          ouverte à tous les licenciés, quel que soit le classement.
+        <!--/z--></p>
+        <div class="hero-comp-actions">
+          <a class="btn btn-blanc" href="#sinscrire">Rejoindre une équipe</a>
+          <a class="btn btn-blanc-ligne" href="#palmares">Les résultats</a>
+        </div>
       </div>
     </div>
   </section>
@@ -501,6 +506,7 @@ première place de poule.<!--/z--></p>
 </footer>
 
 <script src="js/menu.js"></script>
+<script src="js/competitions-hero.js"></script>
 
 </body>
 </html>
