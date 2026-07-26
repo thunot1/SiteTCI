@@ -48,17 +48,65 @@
 
 <main id="contenu">
 
-  <section class="hero hero-page">
-    <div class="hero-lignes" aria-hidden="true">
-      <span class="l-h1"></span><span class="l-h2"></span>
-      <span class="l-h3"></span><span class="l-h4"></span>
-      <span class="l-v1"></span><span class="l-v2"></span><span class="l-v3"></span>
-      <span class="l-filet"></span>
+  <!-- ── Bandeau École — photo plein cadre + voile rouge ─────────
+       Le rouge reste le filet de sécurité : si img/ecole-hero.jpg est absent,
+       js/ecole.js retire l'image et le dégradé rouge occupe la place. -->
+  <section class="hero-ecole">
+    <div class="hero-ecole-photo">
+      <img class="hero-ecole-img" src="img/ecole-hero.jpg" width="1600" height="900"
+           alt="Entraînement des jeunes de l'école de tennis, en fin de journée sur les courts du club.">
+      <span class="hero-ecole-voile" aria-hidden="true"></span>
     </div>
-    <div class="hero-inner">
-      <p class="fil"><a href="/">Accueil</a> · École de tennis</p>
-      <h1><!--z:hero.titre-->L'école de tennis<!--/z--></h1>
-      <p class="hero-texte"><!--z:hero.texte-->C'est 49 groupes répartis du lundi au samedi allant des cours de mini-tennis aux adultes. 6 moniteurs encadrent les groupes tout au long de la saison, répartis par niveau.<!--/z--></p>
+    <div class="hero-ecole-inner">
+      <div class="contenu">
+        <p class="fil"><a href="/">Accueil</a> · École de tennis</p>
+        <h1><!--z:hero.titre-->L'école de tennis<!--/z--></h1>
+        <p class="hero-ecole-sous"><!--z:hero.texte-->C'est 49 groupes répartis du lundi au samedi allant des cours de mini-tennis aux adultes. 6 moniteurs encadrent les groupes tout au long de la saison, répartis par niveau.<!--/z--></p>
+        <div class="hero-ecole-actions">
+          <a class="btn btn-plein" href="#planning">Découvrir les groupes</a>
+          <a class="btn btn-blanc-ligne" href="#equipe">Rencontrer les moniteurs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Chiffres clés (compteurs animés) ───────────────────── -->
+  <section class="chiffres-bande">
+    <div class="contenu">
+      <div class="chiffres-ecole">
+        <div class="chiffre-carte">
+          <span class="chiffre-ic" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <p class="n" data-cible="350" data-suffixe="+">350+</p>
+          <p class="l">Jeunes licenciés</p>
+        </div>
+        <div class="chiffre-carte">
+          <span class="chiffre-ic" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          </span>
+          <p class="n" data-cible="49">49</p>
+          <p class="l">Groupes</p>
+        </div>
+        <div class="chiffre-carte">
+          <span class="chiffre-ic" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>
+          </span>
+          <p class="n" data-cible="6">6</p>
+          <p class="l">Moniteurs diplômés</p>
+        </div>
+        <div class="chiffre-carte">
+          <span class="chiffre-ic" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+          </span>
+          <p class="n" data-cible="6">6</p>
+          <p class="l">Jours de cours&nbsp;/&nbsp;semaine</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -250,6 +298,7 @@
 
 <script src="js/menu.js"></script>
 <script src="js/equipe-anim.js" defer></script>
+<script src="js/ecole.js" defer></script>
 
 </body>
 </html>
