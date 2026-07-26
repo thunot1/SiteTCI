@@ -184,6 +184,7 @@ relaie par e-mail au bureau. **Rien n'est stocké sur ce site.** Conséquences :
 | Clé | Type | Contenu |
 |-----|------|---------|
 | `hero.titre` · `hero.texte` | simple | Bandeau |
+| `chiffres-ecole` | liste | Capsules de chiffres clés (icône + nombre + libellé) sous le bandeau |
 | `planning.saison` | simple | Saison affichée dans le premier bloc |
 | `planning.intro` | simple | Groupes et planning — introduction (lien mailto possible) |
 | `fonctionnement.texte1` · `.texte2` | simple | Descriptif — paragraphes pédagogiques (dans le premier bloc) |
