@@ -342,7 +342,7 @@ a { color: var(--rouge-texte); }
    bouton blanc) mais court : le contenu de la page apparaît vite. */
 .hero-club {
   position: relative; overflow: hidden; isolation: isolate; color: #fff;
-  min-height: clamp(292px, 33vh, 340px);
+  min-height: clamp(440px, 60vh, 620px);
 }
 .hero-club-photo {
   position: absolute; inset: 0; z-index: 0;
@@ -362,26 +362,26 @@ a { color: var(--rouge-texte); }
   width: clamp(360px, 40%, 500px); max-width: 92%;
   display: flex; align-items: center;
   background: linear-gradient(160deg, var(--rouge) 0%, var(--rouge-fond) 55%, #A81A1A 100%);
-  clip-path: polygon(0 0, 100% 0, calc(100% - 4vw) 100%, 0 100%);
-  filter: drop-shadow(10px 0 24px rgba(120, 8, 8, .30));
+  clip-path: polygon(0 0, 100% 0, calc(100% - 5vw) 100%, 0 100%);
+  filter: drop-shadow(10px 0 26px rgba(120, 8, 8, .32));
 }
 /* Balle de tennis en filigrane (≈4 %), presque invisible, coupée par la diagonale. */
 .hero-club-panneau::before {
   content: ""; position: absolute; z-index: 0; pointer-events: none;
-  right: -7%; top: 50%; width: 50%; aspect-ratio: 1; transform: translateY(-50%);
-  border-radius: 50%; border: 3px solid #fff; opacity: .04;
+  right: -6%; top: 50%; width: 54%; aspect-ratio: 1; transform: translateY(-50%);
+  border-radius: 50%; border: 3px solid #fff; opacity: .05;
 }
 .hero-club-contenu {
-  position: relative; z-index: 1; width: 100%; max-width: 440px;
-  padding: 24px clamp(22px, 3vw, 38px) 24px clamp(26px, 4vw, 60px);
+  position: relative; z-index: 1; width: 100%; max-width: 460px;
+  padding: 30px clamp(24px, 3vw, 44px) 30px clamp(28px, 4.5vw, 76px);
 }
 .hero-club h1 {
   font-family: var(--serif); font-weight: 600;
-  font-size: clamp(32px, 3.6vw, 48px); line-height: 1; letter-spacing: .012em;
-  text-transform: uppercase; margin: 0 0 12px;
+  font-size: clamp(36px, 4.4vw, 58px); line-height: 1; letter-spacing: .012em;
+  text-transform: uppercase; margin: 0 0 14px;
 }
-.hero-club-texte { font-size: 14px; line-height: 1.55; color: rgba(255,255,255,.94); max-width: 42ch; }
-.hero-club-actions { margin-top: 18px; }
+.hero-club-texte { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.94); max-width: 44ch; }
+.hero-club-actions { margin-top: 24px; }
 
 /* Bouton blanc — même finition que l'accueil. */
 .hero-club .btn-blanc {
