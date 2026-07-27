@@ -48,21 +48,24 @@
 
 <main id="contenu">
 
-  <section class="hero hero-page">
-    <div class="hero-lignes" aria-hidden="true">
-      <span class="l-h1"></span><span class="l-h2"></span>
-      <span class="l-h3"></span><span class="l-h4"></span>
-      <span class="l-v1"></span><span class="l-v2"></span><span class="l-v3"></span>
-      <span class="l-filet"></span>
+  <!-- ── Bandeau Inscription — photo immersive + panneau rouge diagonal ─
+       Hero « vitrine » partagé (voir css .hero-vitrine). Repli rouge si
+       img/inscription-hero.jpg est absent (js/hero-vitrine.js). -->
+  <section class="hero-vitrine">
+    <div class="hero-vitrine-photo">
+      <img class="hero-vitrine-img" src="img/inscription-hero.jpg" width="1600" height="900"
+           alt="Jeunes joueurs à l'entraînement au Tennis Club Issois.">
+      <span class="hero-vitrine-voile" aria-hidden="true"></span>
     </div>
-    <div class="hero-inner">
-      <p class="fil"><a href="/">Accueil</a> · S'inscrire</p>
-      <h1><!--z:hero.titre-->Nous rejoindre<!--/z--></h1>
-      <p class="hero-texte"><!--z:hero.texte-->
-        L'adhésion court du <b>1<sup>er</sup> octobre 2026 au 30 septembre 2027</b>.
-        Elle comprend la licence FFT, l'accès aux courts, et les cours si vous
-        en prenez.
-      <!--/z--></p>
+    <div class="hero-vitrine-panneau">
+      <div class="hero-vitrine-contenu">
+        <h1><!--z:hero.titre-->Nous rejoindre<!--/z--></h1>
+        <p class="hero-vitrine-sous"><!--z:hero.texte-->
+          L'adhésion court du <b>1<sup>er</sup> octobre 2026 au 30 septembre 2027</b>.
+          Elle comprend la licence FFT, l'accès aux courts, et les cours si vous
+          en prenez.
+        <!--/z--></p>
+      </div>
     </div>
   </section>
 
@@ -547,6 +550,7 @@
 <script src="js/simulateur.js"></script>
 <script src="js/demande.js"></script>
 <script src="js/menu.js"></script>
+<script src="js/hero-vitrine.js"></script>
 
 </body>
 </html>
