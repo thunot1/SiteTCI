@@ -1381,6 +1381,60 @@ a.vitrine-carte:hover {
 .album-corps h3 { font-size: 18px; margin-bottom: 6px; }
 .album-corps p { font-size: 14.5px; color: var(--gris); }
 
+/* Album à plusieurs photos : la couverture est un bouton qui ouvre la
+   visionneuse. Un badge indique le nombre de photos. */
+.album-photos { display: flex; flex-direction: column; }
+.album-ouvrir {
+  display: block; width: 100%; padding: 0; margin: 0; border: 0; background: none;
+  font: inherit; color: inherit; cursor: pointer; position: relative;
+}
+.album-ouvrir .album-vignette { opacity: 1; position: relative; overflow: hidden; }
+.album-ouvrir img { transition: transform .4s cubic-bezier(.22,1,.36,1); }
+.album-ouvrir:hover img { transform: scale(1.05); }
+.album-ouvrir:focus-visible { outline: 3px solid var(--rouge); outline-offset: 2px; }
+.album-compte {
+  position: absolute; right: 10px; bottom: 10px;
+  background: rgba(20,10,8,.72); color: #fff; font-size: 12.5px; font-weight: 700;
+  padding: 4px 11px; border-radius: 20px;
+}
+
+/* ── Visionneuse (lightbox) ─────────────────────────────────────── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  display: none; align-items: center; justify-content: center;
+  background: rgba(12,6,5,.93); padding: 20px;
+}
+.lightbox.ouvert { display: flex; }
+.lightbox-scene { position: relative; max-width: 92vw; }
+.lightbox-img {
+  max-width: 92vw; max-height: 80vh; display: block; margin: 0 auto;
+  border-radius: 6px; box-shadow: 0 24px 70px rgba(0,0,0,.55); background: #000;
+}
+.lightbox-legende { color: #fff; text-align: center; margin: 14px 0 0; font-size: 16px; font-weight: 600; }
+.lightbox-compteur { color: rgba(255,255,255,.65); text-align: center; margin: 4px 0 0; font-size: 13px; }
+.lightbox-btn {
+  position: absolute; top: 38%; transform: translateY(-50%);
+  width: 52px; height: 52px; border: 0; border-radius: 50%; cursor: pointer;
+  background: rgba(255,255,255,.15); color: #fff; font-size: 30px; line-height: 1;
+  display: flex; align-items: center; justify-content: center; transition: background .2s ease;
+}
+.lightbox-btn:hover { background: rgba(255,255,255,.28); }
+.lightbox-prev { left: -72px; }
+.lightbox-next { right: -72px; }
+.lightbox-fermer {
+  position: absolute; top: 14px; right: 16px; z-index: 1;
+  width: 46px; height: 46px; border: 0; border-radius: 50%; cursor: pointer;
+  background: rgba(255,255,255,.15); color: #fff; font-size: 26px; line-height: 1;
+}
+.lightbox-fermer:hover { background: rgba(255,255,255,.28); }
+@media (max-width: 720px) {
+  .lightbox-prev { left: 6px; } .lightbox-next { right: 6px; }
+  .lightbox-btn { background: rgba(0,0,0,.45); width: 46px; height: 46px; font-size: 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .album-ouvrir img { transition: none; }
+}
+
 /* ── Pages légales ───────────────────────────────────────────── */
 
 /* Ces textes se lisent en continu et se citent par article. La numérotation
