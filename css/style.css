@@ -1468,3 +1468,62 @@ a.vitrine-carte:hover {
 .form-retour.ok { color: var(--vert); }
 .form-retour.ko { color: var(--rouge-texte); }
 .form-repli { margin: 0; font-size: 14px; color: var(--gris); }
+
+/* ── Fiche d'inscription en ligne ────────────────────────────────
+   Formulaire long, découpé en blocs (fieldset). Réutilise .formulaire pour
+   le style des champs ; ajoute ici les groupes de blocs, les listes de
+   choix (radios/cases) et le cadre de signature. */
+.fiche-inscription { max-width: 760px; margin: 8px auto 0; gap: 18px; padding: 0; border: 0; background: none; }
+.fiche-bloc {
+  background: #fff; border: 1px solid var(--lisere); border-radius: var(--r-lg);
+  padding: 22px 24px; margin: 0; min-inline-size: 0;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.fiche-bloc > legend {
+  font-family: var(--serif); font-weight: 600; font-size: 20px;
+  padding: 0 10px 0 0; margin-bottom: 2px; color: var(--encre);
+}
+.fiche-fac {
+  font-family: var(--sans, inherit); font-weight: 400; font-size: 13px;
+  color: var(--gris); font-style: italic;
+}
+.fiche-aide { margin: 0; font-size: 14px; color: var(--gris); line-height: 1.5; }
+/* Listes de choix : radios en ligne, cases empilées. Les puces de saisie
+   reprennent une taille normale (le style .formulaire input les élargirait). */
+.form-radios { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.form-cases  { display: flex; flex-direction: column; gap: 8px; }
+.form-radios label, .form-cases label {
+  display: flex; align-items: center; gap: 9px;
+  font-weight: 400; font-size: 15.5px; cursor: pointer;
+}
+.form-radios input, .form-cases input {
+  width: 19px; height: 19px; padding: 0; flex: 0 0 auto;
+  accent-color: var(--rouge-fond);
+}
+.form-radios input:focus, .form-cases input:focus { outline: 2px solid var(--rouge); outline-offset: 1px; }
+
+/* Cadre de signature : fond blanc, aspect « à signer ». Le canvas s'affiche
+   à la largeur du bloc, sa résolution interne reste 600×200 (voir inscription.js). */
+.signature-zone { display: flex; flex-direction: column; gap: 8px; }
+.signature-pad {
+  width: 100%; height: auto; aspect-ratio: 3 / 1; max-width: 480px;
+  background: #fff; border: 2px dashed var(--lisere); border-radius: var(--r-md);
+  touch-action: none; cursor: crosshair; display: block;
+}
+.signature-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.signature-aide { font-size: 13.5px; color: var(--gris); }
+.btn-petit { padding: 7px 15px; font-size: 14px; }
+.visuellement-cache {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+/* Le simulateur intégré à la fiche n'a pas besoin d'être « révélé » : il est
+   déjà dans un bloc visible. On le montre donc même si .actif n'est pas posé. */
+.fiche-bloc .simulateur { display: block; }
+/* Dans un .formulaire, la règle « .formulaire input {width:100%} » élargirait
+   les cases du simulateur : on rend leur taille normale via un sélecteur plus
+   spécifique (indépendant de l'ordre des règles). */
+.fiche-inscription .simu-cases input {
+  width: 19px; height: 19px; padding: 0; border: 0; background: none;
+  flex: 0 0 auto; accent-color: var(--rouge-fond);
+}
