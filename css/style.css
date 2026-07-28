@@ -1542,6 +1542,8 @@ a.vitrine-carte:hover {
   color: var(--gris); font-style: italic;
 }
 .fiche-aide { margin: 0; font-size: 14px; color: var(--gris); line-height: 1.5; }
+/* Lien de règlement en ligne intégré au bloc « Paiement » de la fiche. */
+.fiche-paiement-enligne { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 /* Listes de choix : radios en ligne, cases empilées. Les puces de saisie
    reprennent une taille normale (le style .formulaire input les élargirait). */
 .form-radios { display: flex; flex-wrap: wrap; gap: 8px 22px; }

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscription en ligne — Tennis Club Issois</title>
+  <meta name="description" content="Remplissez et signez votre fiche d'inscription au Tennis Club Issois directement en ligne, puis envoyez-la au club.">
+  <link rel="canonical" href="https://tennisclubissois.fr/inscription-en-ligne.html">
+  <!-- CHANTIER : à retirer au lancement -->
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/icone-tci.png">
+  <meta name="theme-color" content="#C62222">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="saut-contenu" href="#contenu">Aller au contenu principal</a>
+
+<header class="entete">
+  <div class="entete-inner">
+    <a class="marque" href="/">
+      <img src="img/logo-tci.png" srcset="img/logo-tci.png 1x, img/logo-tci@2x.png 2x"
+           width="220" height="99" alt="Tennis Club Issois">
+      <span class="marque-lieu">Is-sur-Tille · Côte-d'Or</span>
+    </a>
+
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav"
+            aria-label="Ouvrir le menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="/">Accueil</a>
+      <a href="/le-club.html">Le club</a>
+      <a href="/ecole-de-tennis.html">École de tennis</a>
+      <a href="/competitions.html">Compétitions</a>
+      <a href="/galerie.html">Galerie</a>
+      <a href="/partenaires.html">Partenaires</a>
+      <a href="/contact.html">Contact</a>
+      <a class="btn btn-plein" href="/inscription.html" aria-current="page">S'inscrire</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <!-- ── Bandeau — hero « vitrine » partagé (repli rouge si la photo manque) ─ -->
+  <section class="hero-vitrine">
+    <div class="hero-vitrine-photo">
+      <img class="hero-vitrine-img" src="img/inscription-hero.jpg" width="1600" height="900"
+           alt="Jeunes joueurs à l'entraînement au Tennis Club Issois.">
+      <span class="hero-vitrine-voile" aria-hidden="true"></span>
+    </div>
+    <div class="hero-vitrine-panneau">
+      <div class="hero-vitrine-contenu">
+        <h1>Inscription en ligne</h1>
+        <p class="hero-vitrine-sous">
+          Remplissez votre fiche, signez dans le cadre prévu et envoyez-la : le bureau
+          la reçoit directement et vous recontacte.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── La fiche d'inscription ────────────────────────────────
+       Reproduit la fiche papier. À l'envoi, les champs + la signature partent
+       en JSON vers MyTCI (/api/site/inscription), qui les stocke pour le
+       bureau. Aucune donnée n'est conservée sur ce site. Le simulateur (mêmes
+       identifiants simu-*) calcule le total en direct via tarifs.js. -->
+  <section class="section">
+    <div class="contenu">
+      <p style="margin:0 0 22px">
+        <a class="lien-seul" href="/inscription.html">← Revenir à la page « S'inscrire »</a>
+      </p>
+
+      <form class="formulaire fiche-inscription" id="form-inscription" novalidate>
+
+        <!-- 1. L'adhérent -->
+        <fieldset class="fiche-bloc">
+          <legend>L'adhérent</legend>
+          <div class="form-duo">
+            <div class="form-champ">
+              <label for="i-nom">Nom <span class="req">*</span></label>
+              <input type="text" id="i-nom" name="nom" autocomplete="family-name" required maxlength="80">
+            </div>
+            <div class="form-champ">
+              <label for="i-prenom">Prénom <span class="req">*</span></label>
+              <input type="text" id="i-prenom" name="prenom" autocomplete="given-name" required maxlength="80">
+            </div>
+          </div>
+          <div class="form-duo">
+            <div class="form-champ">
+              <label for="i-naissance">Date de naissance <span class="req">*</span></label>
+              <input type="date" id="i-naissance" name="naissance" required>
+            </div>
+            <div class="form-champ">
+              <label id="lbl-sexe">Sexe <span class="req">*</span></label>
+              <div class="form-radios" role="radiogroup" aria-labelledby="lbl-sexe">
+                <label><input type="radio" name="sexe" value="Féminin" required> Féminin</label>
+                <label><input type="radio" name="sexe" value="Masculin"> Masculin</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-duo">
+            <div class="form-champ">
+              <label for="i-tel1">Téléphone 1 <span class="req">*</span></label>
+              <input type="tel" id="i-tel1" name="tel1" autocomplete="tel" required maxlength="30">
+            </div>
+            <div class="form-champ">
+              <label for="i-tel2">Téléphone 2</label>
+              <input type="tel" id="i-tel2" name="tel2" maxlength="30">
+            </div>
+          </div>
+          <div class="form-champ">
+            <label for="i-email">Email <span class="req">*</span></label>
+            <input type="email" id="i-email" name="email" autocomplete="email" required maxlength="150">
+          </div>
+          <div class="form-champ">
+            <label for="i-adresse">Adresse <span class="req">*</span></label>
+            <textarea id="i-adresse" name="adresse" rows="2" required maxlength="250"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- 2. Formule et coût — simulateur intégré (mêmes IDs simu-*) -->
+        <fieldset class="fiche-bloc">
+          <legend>Formule et coût</legend>
+          <div class="simulateur" id="simulateur">
+            <div class="simu">
+              <div>
+                <div class="simu-champ">
+                  <label for="simu-profil">Qui s'inscrit&nbsp;?</label>
+                  <select id="simu-profil" name="profil">
+                    <option value="mini">Un enfant né en 2020 ou après</option>
+                    <option value="jeune" selected>Un jeune né entre 2009 et 2019</option>
+                    <option value="adulte">Un adulte né en 2008 ou avant</option>
+                    <option value="demandeur">Un adulte demandeur d'emploi</option>
+                  </select>
+                </div>
+                <div class="simu-champ">
+                  <label for="simu-cours">Avec des cours&nbsp;?</label>
+                  <select id="simu-cours" name="cours">
+                    <option value="aucun">Sans cours — jeu libre uniquement</option>
+                    <option value="mini">Mini-tennis, 1 cours par semaine</option>
+                    <option value="un" selected>1 cours par semaine</option>
+                    <option value="deux">2 cours par semaine</option>
+                    <option value="deuxCompet">2 cours dont 1 compétition</option>
+                    <option value="trois">3 cours par semaine</option>
+                  </select>
+                </div>
+                <div class="simu-champ">
+                  <label id="lbl-acces">Accès aux courts</label>
+                  <div class="simu-cases" role="group" aria-labelledby="lbl-acces">
+                    <label><input type="checkbox" id="simu-badge" name="badge"> Badge du court couvert</label>
+                    <label><input type="checkbox" id="simu-cle" name="cle"> Clé des courts extérieurs</label>
+                  </div>
+                </div>
+              </div>
+              <div class="simu-resultat">
+                <h3>Votre inscription</h3>
+                <ul class="simu-lignes" id="simu-lignes"></ul>
+                <div class="simu-total">
+                  <span class="lbl">Total</span>
+                  <span class="val" id="simu-total">—</span>
+                </div>
+                <p class="simu-note" id="simu-fractionnement"></p>
+                <p class="simu-caution" id="simu-cautions" hidden></p>
+              </div>
+            </div>
+          </div>
+          <p class="fiche-aide">Le tarif famille (125 €) et les situations particulières sont ajustés
+             par le bureau à la réception de votre fiche.</p>
+        </fieldset>
+
+        <!-- 3. Créneaux et niveau -->
+        <fieldset class="fiche-bloc">
+          <legend>Créneaux et niveau <span class="fiche-fac">si vous prenez des cours</span></legend>
+          <div class="form-duo">
+            <div class="form-champ">
+              <label for="i-jours">Jours souhaités</label>
+              <input type="text" id="i-jours" name="creneauJours" maxlength="80" placeholder="Ex. mercredi, samedi">
+            </div>
+            <div class="form-champ">
+              <label for="i-heure">Heure souhaitée</label>
+              <input type="text" id="i-heure" name="creneauHeure" maxlength="80" placeholder="Ex. 17 h – 18 h">
+            </div>
+          </div>
+          <p class="fiche-aide">Les créneaux sont validés par un moniteur : indiquez vos préférences,
+             elles seront confirmées.</p>
+          <div class="form-champ">
+            <label id="lbl-niveau">Niveau</label>
+            <div class="form-radios" role="radiogroup" aria-labelledby="lbl-niveau">
+              <label><input type="radio" name="niveau" value="Débutant"> Débutant</label>
+              <label><input type="radio" name="niveau" value="A déjà joué"> A déjà joué</label>
+              <label><input type="radio" name="niveau" value="Classé"> Classé</label>
+            </div>
+          </div>
+          <div class="form-champ" id="i-classement-champ" hidden>
+            <label for="i-classement">Classement</label>
+            <input type="text" id="i-classement" name="classement" maxlength="20" placeholder="Ex. 30/2">
+          </div>
+        </fieldset>
+
+        <!-- 4. Paiement (avec le lien de règlement en ligne intégré) -->
+        <fieldset class="fiche-bloc">
+          <legend>Paiement</legend>
+          <div class="form-champ">
+            <label id="lbl-frac">Réglé en</label>
+            <div class="form-radios" role="radiogroup" aria-labelledby="lbl-frac">
+              <label><input type="radio" name="paiementFois" value="1 fois" checked> 1 fois</label>
+              <label><input type="radio" name="paiementFois" value="3 fois"> 3 fois</label>
+              <label><input type="radio" name="paiementFois" value="4 fois"> 4 fois</label>
+            </div>
+          </div>
+          <div class="form-champ">
+            <label id="lbl-modes">Moyen(s) de paiement</label>
+            <div class="form-cases" role="group" aria-labelledby="lbl-modes">
+              <label><input type="checkbox" name="paiementModes" value="Chèque"> Chèque</label>
+              <label><input type="checkbox" name="paiementModes" value="Espèces"> Espèces</label>
+              <label><input type="checkbox" name="paiementModes" value="Virement"> Virement</label>
+              <label><input type="checkbox" name="paiementModes" value="Chèques vacances / coupons sport (ANCV)"> Chèques vacances, coupons sport (ANCV)</label>
+              <label><input type="checkbox" name="paiementModes" value="Autre (CAF, Pass'Sport, CCAS…)"> Autre (CAF, Pass'Sport, Passeport vacances du CCAS…)</label>
+            </div>
+          </div>
+          <div class="fiche-paiement-enligne">
+            <p class="fiche-aide">Fractionnement en 1, 3 ou 4 fois sans frais. Vous pouvez régler
+               <b>en ligne</b> (paiement sécurisé du Crédit Mutuel) ou au club-house. Pour des raisons
+               d'assurance, l'accès aux courts n'est autorisé qu'une fois la licence réglée.</p>
+            <a class="btn btn-plein btn-petit" target="_blank" rel="noopener"
+               href="https://www.payasso.fr/tennis-club-issois/inscription-au-tennis-club-issois">
+              Régler en ligne</a>
+          </div>
+        </fieldset>
+
+        <!-- 5. Droit à l'image -->
+        <fieldset class="fiche-bloc">
+          <legend>Droit à l'image <span class="fiche-fac">facultatif</span></legend>
+          <p class="fiche-aide">Vous êtes libre de refuser, sans conséquence sur l'adhésion.
+             Pour un mineur, le représentant légal répond.</p>
+          <div class="form-champ">
+            <label id="lbl-capt">Prise de photographies (captation)</label>
+            <div class="form-radios" role="radiogroup" aria-labelledby="lbl-capt">
+              <label><input type="radio" name="imageCaptation" value="Autorise"> J'autorise</label>
+              <label><input type="radio" name="imageCaptation" value="Refuse"> Je refuse</label>
+            </div>
+          </div>
+          <div class="form-champ">
+            <label id="lbl-diff">Diffusion / publication des photographies</label>
+            <div class="form-radios" role="radiogroup" aria-labelledby="lbl-diff">
+              <label><input type="radio" name="imageDiffusion" value="Autorise"> J'autorise</label>
+              <label><input type="radio" name="imageDiffusion" value="Refuse"> Je refuse</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- 6. Commentaires -->
+        <fieldset class="fiche-bloc">
+          <legend>Commentaires <span class="fiche-fac">facultatif</span></legend>
+          <div class="form-champ">
+            <label for="i-commentaires" class="visuellement-cache">Commentaires</label>
+            <textarea id="i-commentaires" name="commentaires" rows="3" maxlength="1000"
+                      placeholder="Une précision, une question, une demande d'essai…"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- 7. Date et signature -->
+        <fieldset class="fiche-bloc">
+          <legend>Date et signature <span class="req">*</span></legend>
+          <div class="form-duo">
+            <div class="form-champ">
+              <label for="i-signataire">Nom du signataire <span class="req">*</span></label>
+              <input type="text" id="i-signataire" name="signataire" required maxlength="120"
+                     placeholder="L'adhérent, ou son représentant légal">
+            </div>
+            <div class="form-champ">
+              <label for="i-datesign">Date <span class="req">*</span></label>
+              <input type="date" id="i-datesign" name="dateSignature" required>
+            </div>
+          </div>
+          <div class="form-champ">
+            <label id="lbl-sign">Signature <span class="req">*</span></label>
+            <div class="signature-zone">
+              <canvas id="i-signature" class="signature-pad" width="600" height="200"
+                      aria-labelledby="lbl-sign" role="img"></canvas>
+              <div class="signature-actions">
+                <span class="signature-aide">Signez avec la souris ou le doigt.</span>
+                <button type="button" class="btn btn-ligne btn-petit" id="i-signature-effacer">Effacer</button>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-champ form-consent">
+          <label>
+            <input type="checkbox" id="i-consent" name="consent" required>
+            <span>Je certifie l'exactitude des informations et j'accepte qu'elles soient
+              transmises au bureau du club pour traiter mon inscription. Elles ne servent
+              qu'à cela. En savoir plus&nbsp;:
+              <a href="/donnees-personnelles.html">Données personnelles</a>. <span class="req">*</span></span>
+          </label>
+        </div>
+
+        <!-- Piège à robots : invisible et vide pour un humain. -->
+        <div class="form-piege" aria-hidden="true">
+          <label>Ne pas remplir <input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-plein" id="i-envoyer">Envoyer ma fiche d'inscription</button>
+          <p class="form-retour" id="i-retour" role="status" aria-live="polite"></p>
+        </div>
+
+        <p class="form-repli">
+          Un souci avec le formulaire&nbsp;? Vous pouvez toujours
+          <a href="/inscription.html#dossier">déposer la fiche papier</a>, ou nous écrire à
+          <a href="mailto:tennisclubissois@live.fr">tennisclubissois@live.fr</a>.
+        </p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="contenu">
+    <div class="pied-grille">
+      <div>
+        <h4>Tennis Club Issois</h4>
+        <address>
+          Allée des Soupirs<br>
+          21120 Is-sur-Tille<br>
+          <a href="mailto:tennisclubissois@live.fr">tennisclubissois@live.fr</a><br>
+          <a href="tel:+33615761192">06 15 76 11 92</a>
+        </address>
+      </div>
+
+      <div>
+        <h4>Le club</h4>
+        <ul>
+          <li><a href="/le-club.html">Qui sommes-nous</a></li>
+          <li><a href="/le-club.html#installations">Installations</a></li>
+          <li><a href="/le-club.html#acces">Accès et plan</a></li>
+          <li><a href="/le-club.html#reglements">Règlements et chartes</a></li>
+          <li><a href="/galerie.html">Galerie</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Pratique</h4>
+        <ul>
+          <li><a href="/inscription.html">Tarifs et inscription</a></li>
+          <li><a href="/ecole-de-tennis.html#planning">Groupes et planning</a></li>
+          <li><a href="https://tenup.fft.fr" rel="noopener">Réserver un court (Ten'Up)</a></li>
+          <li><a href="/contact.html#liens">Liens utiles</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pied-bas">
+      <p>© 2026 Tennis Club Issois — Association loi 1901</p>
+      <p class="pied-legal">
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <a href="/donnees-personnelles.html">Données personnelles</a>
+        <a href="/cookies.html">Cookies</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/tarifs.js"></script>
+<script src="js/simulateur.js"></script>
+<script src="js/inscription.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/hero-vitrine.js"></script>
+
+</body>
+</html>
