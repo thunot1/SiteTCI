@@ -1318,7 +1318,8 @@ a.vitrine-carte:hover {
 }
 
 /* Un logo fourni remplace le nom composé, sans changer la géométrie de la carte. */
-.partenaire img { max-height: 46px; width: auto; margin: 0 auto; }
+.partenaire img { max-height: 46px; max-width: 100%; width: auto; margin: 0 auto; }
+.partenaire img.grand { max-height: 60px; }
 
 /* ── Compétitions ────────────────────────────────────────────── */
 
