@@ -1296,6 +1296,7 @@ a.vitrine-carte:hover {
 .lien-utile .nom { font-weight: 700; font-size: 16.5px; }
 .lien-utile .desc { color: var(--gris); font-size: 14.5px; margin-top: 3px; }
 .lien-utile .hote { color: var(--rouge-texte); font-size: 13px; font-weight: 700; margin-top: 8px; }
+.lien-utile .picto img { display: block; height: 42px; width: auto; max-width: 108px; object-fit: contain; }
 
 /* ── Plan des installations ──────────────────────────────────── */
 
