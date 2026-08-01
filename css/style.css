@@ -1207,7 +1207,7 @@ a.vitrine-carte:hover {
 .vitrine-carte .site {
   font-size: 12.5px; color: var(--rouge-texte); font-weight: 700; margin-top: 10px;
 }
-.vitrine-carte img { max-height: 62px; width: auto; margin: 0 auto; }
+.vitrine-carte img { width: 100%; height: 64px; object-fit: contain; }
 
 .famille-partenaires { margin-bottom: 34px; }
 .famille-partenaires h3 {
