@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1350" viewBox="0 0 2400 1350">
+  <defs>
+    <style type="text/css"><![CDATA[
+      .sans { font-family: Montserrat, "Avenir Next", "Segoe UI", Arial, sans-serif; }
+    ]]></style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="2400" height="1350" fill="#FFFFFF" />
+
+  <!-- Left navy block -->
+  <!-- Dimensions chosen to visually match proportions from the raster -->
+  <g id="left-block" transform="translate(100,140)">
+    <rect x="0" y="0" width="560" height="1060" rx="0" ry="0" fill="#0B2A52" />
+    <!-- Small top/bottom notches -->
+    <rect x="260" y="-34" width="40" height="68" fill="#FFFFFF" />
+    <rect x="260" y="1026" width="40" height="68" fill="#FFFFFF" />
+    <!-- Central divider line -->
+    <rect x="80" y="520" width="400" height="30" fill="#FFFFFF" />
+    <!-- TEN / NIS -->
+    <text class="sans" x="280" y="380" text-anchor="middle" font-size="210" fill="#FFFFFF" font-weight="700" letter-spacing="10">TEN</text>
+    <text class="sans" x="280" y="910" text-anchor="middle" font-size="210" fill="#FFFFFF" font-weight="700" letter-spacing="10">NIS</text>
+  </g>
+
+  <!-- Right text block -->
+  <g id="right-text" transform="translate(780, 410)">
+    <text class="sans" x="0" y="0" font-size="250" fill="#0B2A52" font-weight="800">COMITÉ</text>
+    <text class="sans" x="0" y="300" font-size="250" fill="#9AA0A6" font-weight="800">CÔTE–D’OR</text>
+    <!-- Use en dash and smart apostrophe for a clean vector look -->
+  </g>
+</svg>
