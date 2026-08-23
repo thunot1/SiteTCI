@@ -228,7 +228,7 @@ a { color: var(--rouge-texte); }
 .claim {
   display: inline-flex; align-items: center; gap: 10px;
   background: rgba(0,0,0,.20); border: 1px solid rgba(255,255,255,.45);
-  padding: 7px 16px; border-radius: 999px;
+  padding: 7px 16px; border-radius: var(--r-sm);
   font-size: 13.5px; font-weight: 700; letter-spacing: .01em;
 }
 .hero h1 {
@@ -792,7 +792,7 @@ a { color: var(--rouge-texte); }
   padding: 18px 0; border-bottom: 1px solid var(--lisere);
 }
 .sommaire a {
-  padding: 9px 16px; border-radius: 999px; text-decoration: none;
+  padding: 9px 16px; border-radius: var(--r-sm); text-decoration: none;
   background: var(--creme); border: 1px solid var(--lisere);
   color: var(--encre); font-size: 14.5px; font-weight: 600;
 }
@@ -1042,7 +1042,7 @@ a { color: var(--rouge-texte); }
 .a-completer {
   display: inline-block; font-size: 12.5px; font-weight: 700;
   color: #8A5200; background: #FFF4E5; border: 1px dashed #C77700;
-  padding: 2px 9px; border-radius: 999px;
+  padding: 2px 9px; border-radius: var(--r-sm);
 }
 
 /* ── Installations ───────────────────────────────────────────── */
