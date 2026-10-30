@@ -1,9 +1,4 @@
 # Site du Tennis Club Issois — https://tennisclubissois.fr
-# CHANTIER — à retirer au lancement
-# L'exploration reste AUTORISÉE volontairement : chaque page porte une balise
-# `noindex`, et un robot doit pouvoir la lire pour en tenir compte. Un
-# `Disallow: /` produirait l'effet inverse — le robot n'entrerait pas, ne
-# verrait jamais la balise, et les adresses pourraient rester listées.
 
 User-agent: *
 Allow: /
@@ -14,5 +9,4 @@ Disallow: /_source/
 Disallow: /ressources/
 Disallow: /tests/
 
-# CHANTIER : sitemap non déclaré tant que le site n'est pas lancé.
-# Sitemap: https://tennisclubissois.fr/sitemap.xml
+Sitemap: https://tennisclubissois.fr/sitemap.xml

@@ -221,11 +221,9 @@ retrouve tous. À faire le jour du lancement :
 
 1. ~~**Le bandeau de chantier** (`<aside class="chantier">` dans `index.html` et
    la section `.chantier` du CSS).~~ **Fait.**
-2. **Les balises `noindex`** : la ligne
-   `<meta name="robots" content="noindex, follow">` des 11 pages. Les trois
-   pages légales retrouveront leur `content="index, follow"` d'origine.
-3. **Le `robots.txt`** : rétablir la déclaration du `Sitemap:` et retirer le
-   commentaire d'explication.
+2. ~~**Les balises `noindex`** des pages (la page 404 garde la sienne).~~ **Fait le 30/10/2026.**
+3. ~~**Le `robots.txt`** : rétablir la déclaration du `Sitemap:`.~~ **Fait le 30/10/2026**
+   (le sitemap liste aussi `inscription-en-ligne.html`).
 
 > L'exploration reste **autorisée** dans `robots.txt` pendant les travaux, et
 > ce n'est pas un oubli : un robot doit pouvoir entrer pour lire la balise
