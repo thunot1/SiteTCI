@@ -169,22 +169,22 @@
               </div>
             </div>
           </div>
-          <p class="fiche-aide">Le tarif famille (125 €) et les situations particulières sont ajustés
+          <p class="fiche-aide fiche-alerte">Le tarif famille (125 €) et les situations particulières sont ajustés
              par le bureau à la réception de votre fiche.</p>
         </fieldset>
 
         <!-- 3. Créneaux et niveau -->
         <fieldset class="fiche-bloc">
           <legend>Créneaux et niveau <span class="fiche-fac">si vous prenez des cours</span></legend>
-          <div class="form-duo">
-            <div class="form-champ">
-              <label for="i-jours">Jours souhaités</label>
-              <input type="text" id="i-jours" name="creneauJours" maxlength="80" placeholder="Ex. mercredi, samedi">
-            </div>
-            <div class="form-champ">
-              <label for="i-heure">Heure souhaitée</label>
-              <input type="text" id="i-heure" name="creneauHeure" maxlength="80" placeholder="Ex. 17 h – 18 h">
-            </div>
+          <!-- Créneaux : une ligne par souhait (jour + heure), jusqu'à quatre.
+               Les lignes sont dessinées par js/inscription.js ; à l'envoi, elles
+               remplissent les deux champs cachés lus par MyTCI. -->
+          <div class="form-champ">
+            <span class="form-etiquette" id="lbl-creneaux">Créneaux souhaités</span>
+            <div class="creneaux-saisie" id="i-creneaux" role="group" aria-labelledby="lbl-creneaux"></div>
+            <button type="button" class="btn btn-ligne creneau-plus" id="i-creneau-plus">+ Ajouter un créneau</button>
+            <input type="hidden" name="creneauJours">
+            <input type="hidden" name="creneauHeure">
           </div>
           <p class="fiche-aide">Les créneaux sont validés par un moniteur : indiquez vos préférences,
              elles seront confirmées.</p>
