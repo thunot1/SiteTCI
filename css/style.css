@@ -1517,6 +1517,20 @@ a.vitrine-carte:hover {
   background: #fff;
 }
 .form-champ .req { color: var(--rouge-texte); }
+.form-champ .form-etiquette { font-weight: 700; font-size: 15px; }
+/* Paragraphe d'un bouton géré depuis MyTCI : sans bouton, il ne laisse pas de vide. */
+.zone-bouton:empty { display: none; }
+.fiche-aide.fiche-alerte { color: var(--rouge-texte); font-weight: 600; }
+/* Créneaux souhaités : une ligne jour + heure par souhait. */
+.creneaux-saisie { display: grid; gap: 10px; }
+.creneau-ligne { display: grid; grid-template-columns: 1fr 1fr 46px; gap: 10px; align-items: center; }
+.creneau-ligne .creneau-retirer {
+  width: 46px; height: 46px; border: 1px solid var(--lisere); border-radius: var(--r-md);
+  background: #fff; color: var(--gris); font-size: 18px; cursor: pointer;
+}
+.creneau-ligne .creneau-retirer:hover { color: var(--rouge-texte); border-color: var(--rouge); }
+.creneau-plus { align-self: flex-start; }
+@media (max-width: 480px) { .creneau-ligne { grid-template-columns: 1fr 1fr 40px; gap: 8px; } }
 .form-consent label {
   display: flex; gap: 11px; align-items: flex-start;
   font-weight: 400; font-size: 15px; line-height: 1.5; cursor: pointer;

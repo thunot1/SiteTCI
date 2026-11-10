@@ -34,6 +34,71 @@
       + String(t.getDate()).padStart(2, '0');
   }
 
+  /* ── Créneaux souhaités : une ligne jour + heure par souhait ───── */
+  var JOURS = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+  var HEURES = [];
+  for (var h = 8; h <= 21; h++) { HEURES.push(h + ' h 00'); if (h < 21) HEURES.push(h + ' h 30'); }
+  var MAX_CRENEAUX = 4;
+  var zoneCreneaux = document.getElementById('i-creneaux');
+  var boutonPlus = document.getElementById('i-creneau-plus');
+
+  function liste(nom, aide, valeurs) {
+    var s = document.createElement('select');
+    s.setAttribute('aria-label', aide);
+    s.className = 'creneau-' + nom;
+    var vide = document.createElement('option');
+    vide.value = ''; vide.textContent = aide;
+    s.appendChild(vide);
+    valeurs.forEach(function (v) {
+      var o = document.createElement('option'); o.value = v; o.textContent = v; s.appendChild(o);
+    });
+    return s;
+  }
+  function majPlus() {
+    if (boutonPlus) boutonPlus.hidden = zoneCreneaux.children.length >= MAX_CRENEAUX;
+  }
+  function ajouterCreneau() {
+    if (!zoneCreneaux || zoneCreneaux.children.length >= MAX_CRENEAUX) return;
+    var ligne = document.createElement('div');
+    ligne.className = 'creneau-ligne';
+    ligne.appendChild(liste('jour', 'Jour', JOURS));
+    ligne.appendChild(liste('heure', 'Heure', HEURES));
+    var retirer = document.createElement('button');
+    retirer.type = 'button'; retirer.className = 'creneau-retirer';
+    retirer.setAttribute('aria-label', 'Retirer ce créneau'); retirer.textContent = '✕';
+    retirer.addEventListener('click', function () {
+      ligne.remove();
+      if (!zoneCreneaux.children.length) ajouterCreneau();
+      majPlus();
+    });
+    ligne.appendChild(retirer);
+    zoneCreneaux.appendChild(ligne);
+    majPlus();
+    return ligne;
+  }
+  function viderCreneaux() {
+    if (!zoneCreneaux) return;
+    zoneCreneaux.innerHTML = '';
+    ajouterCreneau();
+  }
+  // Les souhaits remplis, dans l'ordre : « Mercredi » et « Mercredi 17 h 00 ».
+  function lireCreneaux() {
+    var jours = [], details = [];
+    if (!zoneCreneaux) return { jours: '', heures: '' };
+    zoneCreneaux.querySelectorAll('.creneau-ligne').forEach(function (l) {
+      var j = l.querySelector('.creneau-jour').value, hr = l.querySelector('.creneau-heure').value;
+      if (!j) return;
+      if (jours.indexOf(j) < 0) jours.push(j);
+      details.push(hr ? j + ' ' + hr : j);
+    });
+    return { jours: jours.join(', '), heures: details.join(' ; ') };
+  }
+  if (boutonPlus) boutonPlus.addEventListener('click', function () {
+    var l = ajouterCreneau();
+    if (l) l.querySelector('select').focus();
+  });
+  viderCreneaux();
+
   /* ── Champ « classement » révélé seulement si « Classé » ──────── */
   var champClassement = document.getElementById('i-classement-champ');
   form.querySelectorAll('input[name="niveau"]').forEach(function (r) {
@@ -143,8 +208,8 @@
       cours: form.cours.value,
       badge: form.badge.checked,
       cle: form.cle.checked,
-      creneauJours: form.creneauJours.value.trim(),
-      creneauHeure: form.creneauHeure.value.trim(),
+      creneauJours: lireCreneaux().jours,
+      creneauHeure: lireCreneaux().heures,
       niveau: coche('niveau'),
       classement: form.classement.value.trim(),
       paiementFois: coche('paiementFois'),
@@ -170,6 +235,7 @@
       .then(function (j) {
         if (j && j.ok) {
           form.reset();
+          viderCreneaux();
           ctx.clearRect(0, 0, canvas.width, canvas.height); fond(); styleTrait(); aSigne = false;
           champClassement.hidden = true;
           dire('Merci ! Votre fiche d’inscription a bien été transmise au club. '
