@@ -1,6 +1,6 @@
 /* Interactions de la page « École de tennis ».
  *
- *  1) Repli de la photo du bandeau : si img/ecole-hero.jpg est absent, on retire
+ *  1) Repli de la photo du bandeau : si img/ecole-hero.webp est absent, on retire
  *     l'image plutôt que d'afficher une image cassée — le dégradé rouge dessous
  *     prend le relais (le rouge reste le filet de sécurité du site).
  *  2) Compteurs animés des chiffres clés, au moment où la bande entre à l'écran.

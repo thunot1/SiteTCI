@@ -38,14 +38,22 @@ La page d'accueil s'ouvre sur un bandeau en deux parties : un **panneau rouge**
 à droite, séparés par une diagonale douce. La photo porte un voile rouge très
 léger pour s'harmoniser avec l'identité du club.
 
-La photo est le fichier **`img/accueil-hero.jpg`** :
+La photo est le fichier **`img/accueil-hero.webp`** :
 
 - **Paysage**, large : **1600 px de côté ou plus**, cadrée pour garder les
   personnes/joueurs plutôt au centre-droit (la gauche passe sous le panneau).
-- **JPEG optimisé** : viser **≤ 400 Ko** (l'image d'accueil est la première
-  chargée). Une photo brute de 1–2 Mo se recompresse en qualité 85 sans perte
-  visible — par exemple avec Pillow :
-  `Image.open('src.jpg').convert('RGB').save('img/accueil-hero.jpg','JPEG',quality=85,optimize=True,progressive=True)`.
+- **WebP optimisé** : viser **≤ 500 Ko**, 1920 px de large au maximum
+  (l'image d'accueil est la première chargée). Une photo brute de plusieurs Mo
+  se convertit en qualité 80 sans perte visible — par exemple avec Pillow :
+  `Image.open('src.jpg').convert('RGB').save('img/accueil-hero.webp','WEBP',quality=80,method=6)`.
+- **`img/accueil-hero.jpg` est conservé** : c'est l'image d'aperçu quand on
+  partage le site sur Facebook ou WhatsApp (balise `og:image`). Le remplacer
+  aussi si la photo d'accueil change.
+
+Les autres photos de bandeau (`club-hero`, `competitions-hero`, `contact-hero`,
+`ecole-hero`, `galerie-hero`, `partenaires-hero`) et `plan-acces` sont aussi en
+WebP. Les photos gérées par MyTCI (équipe, galerie, juges, logos partenaires)
+restent en JPEG : MyTCI les publie sous ce nom.
 
 Si le fichier est absent, `js/accueil-hero.js` retire l'image et le dégradé
 rouge occupe la place : jamais d'image cassée, le rouge reste le filet de
@@ -208,7 +216,7 @@ taille, et ne dépend d'aucun tiers. La localisation dans la commune est assuré
 par le lien vers OpenStreetMap.
 
 Si vous préférez malgré tout publier la photo satellite, dites-le : elle est
-prête (`img/plan-acces.jpg`, 154 Ko).
+prête (`img/plan-acces.webp`, 154 Ko).
 
 ## Au lancement — ce qu'il faudra retirer
 
