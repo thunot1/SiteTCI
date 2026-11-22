@@ -3,8 +3,11 @@
  * Chaque album ayant des photos porte un bouton .album-ouvrir avec l'attribut
  * data-photos (identifiants séparés par des espaces) et data-titre. Au clic, on
  * ouvre une visionneuse plein écran ; la première photo est la couverture.
- * Les fichiers sont dans img/galerie/<id>.jpg. Servi depuis le même domaine :
- * autorisé par la politique de sécurité du site.
+ * Les fichiers sont dans img/galerie/<id>.webp quand l'album porte
+ * data-format="webp" (photos publiées par MyTCI depuis novembre 2026), sinon
+ * img/galerie/<id>.jpg. Si une photo manque sous ce nom, l'autre format est
+ * tenté une fois : un album qui mêle anciennes et nouvelles photos s'affiche.
+ * Servi depuis le même domaine : autorisé par la politique de sécurité du site.
  */
 (function () {
   var ouvrables = Array.prototype.slice.call(document.querySelectorAll('.album-ouvrir'));
@@ -34,12 +37,20 @@
   var btnNext  = lb.querySelector('.lightbox-next');
   var btnClose = lb.querySelector('.lightbox-fermer');
 
-  var photos = [], index = 0, titre = '', declencheur = null;
+  var photos = [], index = 0, titre = '', declencheur = null, format = 'jpg';
 
-  function chemin(id) { return 'img/galerie/' + id + '.jpg'; }
+  function chemin(id, ext) { return 'img/galerie/' + id + '.' + ext; }
+
+  // Photo introuvable sous le format attendu : on tente l'autre, une seule fois.
+  img.addEventListener('error', function () {
+    if (!img.getAttribute('src') || img.dataset.repli) return;
+    img.dataset.repli = '1';
+    img.src = chemin(photos[index], format === 'webp' ? 'jpg' : 'webp');
+  });
 
   function montrer() {
-    img.src = chemin(photos[index]);
+    delete img.dataset.repli;
+    img.src = chemin(photos[index], format);
     img.alt = titre + ' — photo ' + (index + 1);
     legende.textContent = titre;
     var multi = photos.length > 1;
@@ -51,6 +62,7 @@
     var data = (a.getAttribute('data-photos') || '').split(/\s+/).filter(Boolean);
     if (!data.length) return;
     photos = data; index = 0;
+    format = a.getAttribute('data-format') === 'webp' ? 'webp' : 'jpg';
     titre = a.getAttribute('data-titre') || '';
     declencheur = a;
     montrer();
